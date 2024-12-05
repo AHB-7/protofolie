@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { ProfessionalSummary } from "./components/home/professional-summary";
 
 export default function Home() {
     return (
-        <div className="w-full mx-auto p-1">
+        <div className="w-full mx-auto p-1 .noise">
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
                 <Image
                     className="mx-auto"
@@ -17,6 +18,7 @@ export default function Home() {
                     &lt; Alan Brim &gt;
                 </p>
             </div>
+            <ProfessionalSummary />
         </div>
     );
 }

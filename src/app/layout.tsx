@@ -19,13 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${poppins.className} h-screen`}
-                style={{
-                    background:
-                        "linear-gradient(0deg, #0c040c, #0b030c, #09030c, #07020c, #06020c, #04010c, #02000c, #00000c)",
-                }}
-            >
+            <body className={`${poppins.className} h-screen gradient-bg`}>
                 <NavComp />
                 {children}
             </body>
