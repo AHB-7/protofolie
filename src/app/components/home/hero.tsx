@@ -6,14 +6,14 @@ export function Hero() {
             <div className="noise"></div>
             <div className="absolute top-42 h-full left-0 w-full flex items-center flex-col gap-4 justify-center">
                 <Image
-                    className="mx-auto"
-                    src="/images/loading.gif"
+                    className="mx-auto w-44 h-72"
+                    src="/images/noise.gif"
                     alt="alt"
-                    width={145}
-                    height={30}
+                    width={250}
+                    height={100}
                 />
                 <p className="text-2xl font-extrabold tracking-widest text-center">
-                    &lt; Alan Brim &gt;
+                    &lt;Alan Brim&gt;
                 </p>
             </div>
         </section>

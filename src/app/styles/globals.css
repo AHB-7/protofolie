@@ -2,12 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    color: #ffffff;
+    @apply text-textColor;
     margin: 0;
     padding: 0;
     @apply w-full max-w-[85rem] mx-auto bg-black;
 }
-.gradient-bg {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .gradient-bg {
     background: linear-gradient(-45deg, #161325, #3e3e3e, #2f2e32);
     background-size: 200% 200%;
     animation: bgAnimation 9s infinite;
@@ -23,12 +29,7 @@ body {
     100% {
         background-position: 0% 80%;
     }
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+} */
 
 .noise::before {
     position: absolute;
@@ -37,53 +38,8 @@ body {
     height: 100%;
     width: 100%;
     content: "";
-    opacity: 0.6;
+    opacity: 0;
     z-index: -2;
     pointer-events: none;
     background: url("/images/noise.gif");
-}
-.menu-btn {
-    position: relative;
-    z-index: 999;
-    cursor: pointer;
-    @apply text-white;
-    &::after {
-        content: "";
-        display: block;
-        width: 4rem;
-        height: 0.5rem;
-        background-color: #ffffff;
-        margin-top: 0.5rem;
-    }
-    &::before {
-        content: "";
-        display: block;
-        width: 4rem;
-        height: 0.3rem;
-        background-color: #ffffff;
-        margin-top: 0.5rem;
-    }
-}
-.menu-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 49;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    max-width: 85rem;
-    height: 100vh;
-    transition: all 0.3s;
-    gap: 4rem;
-    background-color: rgb(191, 193, 195);
-    color: #000;
-    font-size: 5rem;
-    font-weight: 900;
-    > button {
-        width: 100%;
-        margin: 0 auto;
-    }
 }
