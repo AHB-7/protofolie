@@ -1,11 +1,10 @@
 export function ProfessionalSummary() {
     return (
-        <section className=" mt-[100vh] relative">
-            <div className="noise"></div>
+        <section className="relative h-screen px-4">
             <h2 className="z-10 text-6xl font-bold py-12">
                 Professional Summary
             </h2>
-            <p className="z-10 text-lg pb-12">
+            <p className="z-10 text-lg pb-12 text-justify tracking-wid">
                 Front-end Developer with a strong foundation in web development,
                 design, and sales. Experienced in creating responsive, dynamic
                 websites using modern frameworks and technologies. Possess
