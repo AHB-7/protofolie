@@ -1,0 +1,10 @@
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    mask-image: url("../../../../public/mask.svg");
+    background-color: red;
+    mask-repeat: no-repeat;
+    mask-size: 40px;
+    color: black;
+}
