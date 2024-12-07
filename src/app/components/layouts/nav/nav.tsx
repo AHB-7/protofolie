@@ -2,7 +2,6 @@
 import styles from "./nav.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GlitchedText } from "../../global/glitch/glitch";
 
 const menuAnime = {
     initial: {
@@ -34,7 +33,7 @@ export function Nav() {
 
     return (
         <nav className={styles.menuContainer}>
-            <GlitchedText text="Front-end Developer" />
+            <p></p>
             <button
                 title="menu"
                 className={`${styles.menuBtn} z-50`}
