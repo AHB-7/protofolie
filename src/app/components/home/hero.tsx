@@ -16,18 +16,18 @@ export function Hero() {
                 <div className="absolute top-42 h-full left-0 w-full flex items-center flex-col gap-4 justify-center">
                     <motion.div
                         initial={{ height: "2rem" }}
-                        animate={{ height: "20rem" }}
+                        animate={{ height: "50rem" }}
                         transition={{
                             duration: 0.8,
                         }}
                     >
                         <Image
-                            className="mx-auto w-44 h-full object-cover"
-                            src="/images/loading.gif"
+                            className="mx-auto w-full h-full object-cover"
+                            src="/images/profile-cut.png"
                             alt="alt"
                             priority
-                            width={250}
-                            height={100}
+                            width={10000}
+                            height={10000}
                         />
                     </motion.div>
                     <div className="font-bold tracking-widest text-center">

@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     mask-image: url("../../../../public/mask.svg");
-    background-color: red;
+    background-color: rgb(197, 193, 193);
     mask-repeat: no-repeat;
     mask-size: 40px;
     color: black;
