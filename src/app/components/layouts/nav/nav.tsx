@@ -1,7 +1,7 @@
 "use client";
 import styles from "./nav.module.css";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const menuAnime = {
     initial: {
@@ -24,7 +24,12 @@ const menuAnime = {
 export function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
     const toggleMenu = () => setMenuOpen(!menuOpen);
-
+    const { scrollYProgress } = useScroll();
+    const backgroundScroll = useTransform(
+        scrollYProgress,
+        [0, 1],
+        ["#fff", "#6366fi"]
+    );
     const navItems = [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
@@ -32,8 +37,16 @@ export function Nav() {
     ];
 
     return (
-        <nav className={styles.menuContainer}>
+        <nav className={`${styles.menuContainer} relativ`}>
             <p></p>
+            <motion.div
+                className="fixed h-full w-1 left-0 top-0"
+                style={{
+                    scaleY: scrollYProgress,
+                    backgroundColor: backgroundScroll,
+                    transformOrigin: "top",
+                }}
+            ></motion.div>
             <button
                 title="menu"
                 className={`${styles.menuBtn} z-50`}
