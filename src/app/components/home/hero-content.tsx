@@ -10,7 +10,7 @@ export function Hero() {
         target: ref,
         offset: ["start start", "end start"],
     });
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
     return (
         <section
@@ -18,7 +18,7 @@ export function Hero() {
             className="relative overflow-hidden h-screen flex justify-center"
         >
             <motion.div
-                className="fixed border flex flex-col gap-4 rounded-3xl py-12 w-[calc(100%-4rem)] h-[calc(100vh-14rem)]"
+                className="fixed border flex flex-col gap-4 rounded-3xl py-12 w-[calc(100%-2rem)] h-[calc(100vh-14rem)]"
                 style={{ scale }}
             >
                 <div className="absolute top-0 left-0 w-full h-full rounded-3xl opacity-40 z-10">
