@@ -28,7 +28,7 @@ export function Nav() {
     const backgroundScroll = useTransform(
         scrollYProgress,
         [0, 1],
-        ["#fff", "#6366fi"]
+        ["#fff", "#fff"]
     );
     const navItems = [
         { name: "Home", href: "/" },

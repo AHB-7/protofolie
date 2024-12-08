@@ -2,7 +2,7 @@
 
 export function ProfessionalSummary() {
     return (
-        <section className="relative h-screen px-4">
+        <section className="relative h-screen px-4 flex items-start justify-start pt-36 flex-col">
             <section
                 className="w-full h-full fixed top-0 left-0 bg-gradient-to-br from-slate-950 to-zinc-950 -z-10"
                 // initial={{ opacity: 0 }}
