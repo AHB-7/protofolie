@@ -3,9 +3,9 @@
     grid-template-columns: 1fr;
 }
 
-.stack span {
+.stack p {
     @apply text-textColor;
-    font-weight: 500;
+    font-weight: 900;
     grid-row-start: 1;
     grid-column-start: 1;
     clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
@@ -14,10 +14,10 @@
         glitch 1s ease infinite 1s alternate-reverse;
 }
 
-.stack span:nth-child(odd) {
+.stack p:nth-child(odd) {
     --glitch-translate: 8px;
 }
-.stack span:nth-child(even) {
+.stack p:nth-child(even) {
     --glitch-translate: -8px;
 }
 

@@ -1,104 +1,69 @@
 "use client";
-import useMousePosition from "./utils/use-mouse-potion";
-import React, { useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { GlitchedText } from "../global/glitch/glitch";
-import { motion } from "framer-motion";
-import style from "./hero.module.css";
 
 export function Hero() {
-    const [isHover, setIsHover] = useState(false);
-    const { x, y } = useMousePosition();
-    const size = isHover ? 140 : 40;
+    const sectionRef = useRef(null); // Reference to the section
+    const { scrollYProgress } = useScroll({
+        target: sectionRef, // Set the section as the scroll reference
+        offset: ["start end", "end start"], // Adjust scroll range mapping
+    });
+
+    const dynamicHeight = useTransform(
+        scrollYProgress,
+        [0, 1],
+        ["30rem", "20rem"]
+    );
+    const dynamicHeightBox = useTransform(
+        scrollYProgress,
+        [0, 1],
+        ["60rem", "20rem"]
+    );
     return (
-        <section className=" relative">
-            <section className="w-full relativ h-screen">
-                <div className="absolute top-42 h-full left-0 w-full flex items-center flex-col gap-4 justify-center">
-                    <motion.div
-                        initial={{ height: "2rem" }}
-                        animate={{ height: "50rem" }}
-                        transition={{
-                            duration: 0.8,
-                        }}
-                    >
-                        <Image
-                            className="mx-auto w-full h-full object-cover"
-                            src="/images/profile-cut.png"
-                            alt="alt"
-                            priority
-                            width={10000}
-                            height={10000}
-                        />
-                    </motion.div>
-                    <div className="font-bold tracking-widest text-center">
-                        <div className="bg-clip-text text-transparent ">
-                            <GlitchedText
-                                text="Hello, I'm"
-                                fontSize="text-2xl"
-                            />
-                        </div>
-                        <GlitchedText
-                            text="&lt;Alan Brim&gt;"
-                            fontSize="text-2xl"
-                        />
-                        <p className="text-md font-light uppercase">
-                            Front-end developer
-                            <br />
-                            Ui/UX designer
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <motion.section
-                className={`${style.mask} w-full relativ h-screen`}
-                animate={{
-                    WebkitMaskPosition: `${x - size}px ${y - size * 2}px`,
-                    WebkitMaskSize: `${size * 2}px`,
-                }}
-                transition={{ type: "tween", ease: "backOut" }}
+        <section
+            ref={sectionRef}
+            className="fixed w-full h-[calc(100vh-4rem)] flex items-start justify-center overflow-hidden px-12"
+        >
+            <motion.div
+                className="relative border flex flex-col gap-4 rounded-3xl py-12"
+                style={{ height: dynamicHeightBox }}
             >
-                <div className="absolute top-42 h-full left-0 w-full flex items-center flex-col gap-4 justify-center">
-                    <div
-                        onMouseEnter={() => setIsHover(true)}
-                        onMouseLeave={() => setIsHover(false)}
-                    >
-                        {" "}
-                        <motion.div
-                            initial={{ height: "2rem" }}
-                            animate={{ height: "20rem" }}
-                            transition={{
-                                duration: 0.8,
-                            }}
-                        >
-                            <Image
-                                className="mx-auto w-44 h-full object-cover"
-                                src="/images/profile.jpg"
-                                alt="alt"
-                                priority
-                                width={250}
-                                height={100}
-                            />
-                        </motion.div>
-                        <div className="font-bold tracking-widest text-center">
-                            <div className="bg-clip-text text-transparent ">
-                                <GlitchedText
-                                    text="Hello, I'm"
-                                    fontSize="text-2xl"
-                                />
-                            </div>
-                            <GlitchedText
-                                text="&lt;Alan Brim&gt;"
-                                fontSize="text-2xl"
-                            />
-                            <p className="text-md font-light uppercase">
-                                Love gaming and cats
-                                <br />
-                                Art and Fun
-                            </p>
-                        </div>
-                    </div>
+                <div className="absolute top-0 left-0 w-full h-full -z-10 rounded-3xl opacity-40">
+                    <Image
+                        src="/images/loading.gif"
+                        alt="Hero Background"
+                        fill
+                        className="w-full h-full object-cover rounded-3xl"
+                    />
                 </div>
-            </motion.section>
+                <h1 className="text-4xl font-bold text-center z-10">
+                    Hello, I&apos;m
+                </h1>
+                <GlitchedText
+                    text="Alan Brim"
+                    class="text-7xl text-center z-10"
+                />
+                <p className="text-center text-xl z-10 px-12">
+                    I&apos;m a full-stack developer with a passion for building
+                    beautiful and functional applications.
+                </p>
+            </motion.div>
+            <div className="absolute bottom-0 left-0 w-full h-screen flex items-end">
+                <motion.div
+                    style={{ height: dynamicHeight }}
+                    className="relative w-full z-20 brightness-75 saturate-0"
+                >
+                    <Image
+                        src="/images/profile-gj.png"
+                        alt="Hero"
+                        priority
+                        fill
+                        className="object-contain"
+                    />
+                </motion.div>
+            </div>
         </section>
     );
 }

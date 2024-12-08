@@ -1,21 +1,27 @@
 import styles from "./glitch.module.css";
+
 export function GlitchedText({
     text,
-    fontSize,
+    class: classes,
 }: {
     text: string;
-    fontSize: string;
+    class: string | string[]; // Accept a string or array of strings
 }) {
+    // Convert `classes` to a single string if it's an array
+    const combinedClasses = Array.isArray(classes)
+        ? classes.join(" ")
+        : classes;
+
     return (
         <div className={styles.stack}>
             {[...Array(3)].map((_, index) => (
-                <span
+                <p
                     key={index}
                     style={{ "--index": index } as React.CSSProperties}
-                    className={fontSize}
+                    className={combinedClasses} // Apply the combined classes
                 >
                     {text}
-                </span>
+                </p>
             ))}
         </div>
     );
