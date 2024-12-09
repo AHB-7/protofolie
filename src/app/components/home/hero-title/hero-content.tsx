@@ -19,14 +19,13 @@ export function Hero() {
     const backgroundScroll = useTransform(
         scrollYProgress,
         [0, 1],
-        ["#000000", "#FF8000"]
+        ["#000000", "#1A1A1D"]
     );
 
-    // Fixed the height by using a transform that outputs valid height values
     const dynamicHeight = useTransform(
         scrollYProgress,
         [0, 0.8],
-        ["100%", "3rem"]
+        ["100%", "4rem"]
     );
     const nonDisplay = useTransform(
         scrollYProgress,
@@ -41,17 +40,18 @@ export function Hero() {
             ref={ref}
             className="relative overflow-hidden h-screen flex justify-center mt-[2rem]"
         >
+            {" "}
             <motion.div
-                className="fixed border flex flex-col gap-4 py-12 mx-auto overflow-hidden max-h-[calc(100vh-8rem)]  w-[calc(100%-2rem)] items-center justify-center"
+                className=" fixed border flex flex-col gap-4 py-12 mx-auto overflow-hidden max-h-[calc(100vh-8rem)] w-[calc(100%-2rem)] items-center justify-center"
                 style={{
                     borderRadius: borderRadius,
                     backgroundColor: backgroundScroll,
-                    backgroundImage: "url(/images/loading.gif)",
+                    backgroundImage: "url(/images/noise.gif)",
                     backgroundRepeat: "no-repeat",
                     backgroundBlendMode: "screen",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    height: dynamicHeight, // Use the new dynamicHeight transform
+                    height: dynamicHeight,
                 }}
             >
                 <div className="flex items-center justify-start flex-col mb-auto">
@@ -75,14 +75,14 @@ export function Hero() {
                         and web development.
                     </motion.p>
                 </div>
-                <motion.div className=" text-center z-20 font-extrabold tracking-widest uppercase justify-center mb-auto text-4xl">
+                <motion.div className=" text-center z-20 font-extrabold tracking-widest uppercase justify-center mb-auto text-5xl">
                     <motion.h2
                         style={{
                             opacity: showOpacity,
                             display: display,
                         }}
                     >
-                        Skills
+                        ... Skills ...
                     </motion.h2>
                 </motion.div>
             </motion.div>

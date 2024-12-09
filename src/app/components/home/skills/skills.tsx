@@ -1,6 +1,8 @@
 "use client";
+import { useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
+
 import {
     FaJsSquare,
     FaReact,
@@ -8,8 +10,16 @@ import {
     FaCss3Alt,
     FaBootstrap,
 } from "react-icons/fa";
+import { useRef } from "react";
 
 export function Skills() {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start 80%", "100% 100%"],
+    });
+    const opacity = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
+
     const skills = [
         {
             name: "JavaScript",
@@ -153,15 +163,19 @@ export function Skills() {
     ];
 
     return (
-        <section className="flex flex-col items-center justify-center h-screen p-8">
-            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+        <section
+            ref={ref}
+            className=" h-screen w-screen flex flex-col items-center justify-center p-3"
+        >
+            <motion.div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4">
                 {skills.map((skill, index) => (
-                    <div
+                    <motion.div
                         key={index}
-                        className="flex flex-col items-center z-20"
+                        className="flex flex-col items-center justify-center z-20 "
+                        style={{ opacity }}
+                        transition={{ delay: 0.5 }}
                     >
                         <div className="relative w-24 h-24">
-                            {/* SVG for circular progress */}
                             <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
                                 <circle
                                     cx="50%"
@@ -191,12 +205,12 @@ export function Skills() {
                                 {skill.icon}
                             </div>
                         </div>
-                        <p className="mt-4 text-center font-medium">
+                        <p className="mt-2 text-center font-medium">
                             {skill.name}
                         </p>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }
