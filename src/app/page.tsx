@@ -3,7 +3,7 @@ import { Hero } from "./components/home/hero-title/hero-content";
 import { ProfessionalSummary } from "./components/home/summary/professional-summary";
 import { ProfileImage } from "./components/home/image/profile-image";
 import { Skills } from "./components/home/skills/skills";
-import { Nav } from "./components/layouts/nav/nav";
+// import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
                 background: backgroundScroll,
             }}
         >
-            <Nav />
+            {/* <Nav /> */}
             <main>
                 <Hero />
                 <ProfileImage />

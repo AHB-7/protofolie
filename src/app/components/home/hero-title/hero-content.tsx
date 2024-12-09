@@ -19,9 +19,15 @@ export function Hero() {
     const backgroundScroll = useTransform(
         scrollYProgress,
         [0, 1],
-        ["#000", "#fff"]
+        ["#000000", "#FF8000"]
     );
-    const scaleDown = useTransform(scrollYProgress, [0, 0.7], [1, 0.09]);
+
+    // Fixed the height by using a transform that outputs valid height values
+    const dynamicHeight = useTransform(
+        scrollYProgress,
+        [0, 0.8],
+        ["100%", "3rem"]
+    );
     const nonDisplay = useTransform(
         scrollYProgress,
         [0, 0.7],
@@ -29,13 +35,14 @@ export function Hero() {
     );
     const display = useTransform(scrollYProgress, [0.7, 1], ["none", "flex"]);
     const showOpacity = useTransform(scrollYProgress, [0, 0.7], [0, 1]);
+
     return (
         <motion.section
             ref={ref}
-            className="relative overflow-hidden h-screen flex justify-center"
+            className="relative overflow-hidden h-screen flex justify-center mt-[2rem]"
         >
             <motion.div
-                className="fixed border flex flex-col gap-4 py-12 mx-auto overflow-hidden w-[calc(100%-2rem)] h-[calc(100vh-8rem)] items-center justify-center  "
+                className="fixed border flex flex-col gap-4 py-12 mx-auto overflow-hidden max-h-[calc(100vh-8rem)]  w-[calc(100%-2rem)] items-center justify-center"
                 style={{
                     borderRadius: borderRadius,
                     backgroundColor: backgroundScroll,
@@ -44,7 +51,7 @@ export function Hero() {
                     backgroundBlendMode: "screen",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    zoom: scaleDown,
+                    height: dynamicHeight, // Use the new dynamicHeight transform
                 }}
             >
                 <div className="flex items-center justify-start flex-col mb-auto">
@@ -68,10 +75,9 @@ export function Hero() {
                         and web development.
                     </motion.p>
                 </div>
-                <motion.div className="text-black text-center z-20 font-extrabold tracking-widest uppercase justify-center mb-auto">
+                <motion.div className=" text-center z-20 font-extrabold tracking-widest uppercase justify-center mb-auto text-4xl">
                     <motion.h2
                         style={{
-                            zoom: "22",
                             opacity: showOpacity,
                             display: display,
                         }}
