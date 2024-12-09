@@ -9,23 +9,11 @@ export function Hero() {
         target: ref,
         offset: ["start start", "end start"],
     });
+
     const borderRadius = useTransform(
         scrollYProgress,
         [0, 0.8],
         ["3rem", "50rem"]
-    );
-
-    const startValue = window.innerHeight - 14 * 12;
-    const endValue = 5 * 16;
-    const height = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [startValue, endValue]
-    );
-    const width = useTransform(
-        scrollYProgress,
-        [0, 0.8],
-        [startValue, endValue]
     );
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
     const backgroundScroll = useTransform(
@@ -33,26 +21,24 @@ export function Hero() {
         [0, 1],
         ["#000", "#fff"]
     );
-
-    // const showBtn = useTransform(scrollYProgress, [0, 0.7], [0, 1]);
-
+    const scaleDown = useTransform(scrollYProgress, [0, 0.7], [1, 0.09]);
+    // const width = useTransform(scrollYProgress, [0, 0.8], ["100%", "5rem"]);
     return (
-        <section
+        <motion.section
             ref={ref}
             className="relative overflow-hidden h-screen flex justify-center"
         >
             <motion.div
-                className="fixed border flex flex-col gap-4 py-12 w-[calc(100%-2rem)]  max-w-[100rem] mx-auto overflow-hidden"
+                className="fixed border flex flex-col gap-4 py-12 mx-auto overflow-hidden w-[calc(100%-4rem)] h-[calc(100vh-8rem)]"
                 style={{
                     borderRadius: borderRadius,
                     backgroundColor: backgroundScroll,
-                    width: width,
-                    height: height,
                     backgroundImage: "url(/images/loading.gif)",
                     backgroundRepeat: "no-repeat",
                     backgroundBlendMode: "screen",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
+                    scale: scaleDown,
                 }}
             >
                 <motion.h1
@@ -72,18 +58,7 @@ export function Hero() {
                     I&apos;m a Front-end Developer Loves new technologies and
                     web development.
                 </motion.p>
-                <p className="text-center text-2xl px-2 z-20 tracking-widest uppercase"></p>
             </motion.div>
-            {/* <motion.div
-                className="fixed border flex flex-col gap-4 py-12 w-[calc(100%-2rem)]  max-w-[100rem] mx-auto z-10"
-                style={{
-                    borderRadius: borderRadius,
-                    backgroundColor: backgroundScroll,
-                    opacity: showBtn,
-                    width: width,
-                    height: height,
-                }}
-            ></motion.div> */}
-        </section>
+        </motion.section>
     );
 }
