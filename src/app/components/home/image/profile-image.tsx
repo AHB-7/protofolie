@@ -22,7 +22,7 @@ export function ProfileImage() {
 
     return (
         <motion.div
-            className="fixed h-full w-full z-10 bottom-0 left-0"
+            className="fixed h-full w-full z-10 bottom-0 left-0 "
             style={{
                 scale: imageScale,
                 transformOrigin: "bottom",
@@ -35,7 +35,7 @@ export function ProfileImage() {
                 priority
                 fill
                 sizes="auto"
-                className="object-cover w-full h-full overflow-visible"
+                className="object-cover w-full h-full overflow-visible max-w-[42rem] mx-auto"
             />
         </motion.div>
     );

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import { Poppins } from "next/font/google";
-import { Nav } from "./components/layouts/nav/nav";
 const poppins = Poppins({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
     style: ["normal", "italic"],
@@ -18,11 +17,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${poppins.className}`}>
-                <Nav />
-                {children}
-            </body>
+        <html lang="en" className={`${poppins.className}`}>
+            {children}
         </html>
     );
 }
