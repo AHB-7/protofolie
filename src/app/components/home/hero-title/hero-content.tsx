@@ -22,7 +22,10 @@ export function Hero() {
     const backgroundColor = useTransform(
         scrollYProgress,
         [0, 1],
-        ["#000000", "#1A1A1D"]
+        [
+            "radial-gradient(circle, rgba(0,0,0,0) 0%, #001A6E 150%)",
+            "radial-gradient(circle, rgba(137,6,165,1) 30%, rgba(209,0,255,1) 200%)",
+        ]
     );
     const removeItem = useTransform(
         scrollYProgress,
@@ -38,22 +41,37 @@ export function Hero() {
             className="relative h-screen flex items-center mt-3 justify-center"
             ref={ref}
         >
-            {/* Initial Animated Center Block */}
+            <motion.div
+                className="fixed z-0 blur-sm"
+                style={{
+                    width: "calc(100% - 2rem)",
+                    height: "calc(100% - 2rem)",
+                    backgroundImage: "url(/images/way.gif)",
+                    backgroundSize: "100% 100%",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    opacity: opacity,
+                    maxWidth: width,
+                    maxHeight: height,
+                    borderRadius: borderRadius,
+                }}
+            ></motion.div>
             <motion.div
                 className="fixed flex items-center justify-center flex-col border border-white border-opacity-20"
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
                     borderRadius: borderRadius,
-                    opacity: opacity,
                     background: backgroundColor,
+                    opacity: opacity,
                     maxWidth: width,
                     maxHeight: height,
+                    objectFit: "cover",
                 }}
             >
-                <div className="">
+                <div className=" flex items-center flex-col justify-center mb-12">
                     <motion.h1
-                        className="text-4xl font-bold mb-4"
+                        className="text-4xl font-bold text-center  mx-auto "
                         style={{
                             display: removeItem,
                         }}
@@ -61,6 +79,7 @@ export function Hero() {
                         Hi, I&apos;m
                     </motion.h1>
                     <motion.div
+                        className="mb-4"
                         style={{
                             display: removeItem,
                         }}
@@ -71,7 +90,7 @@ export function Hero() {
                         />
                     </motion.div>
                     <motion.p
-                        className="text-lg mt-2"
+                        className="text-lg mt-2 text-center"
                         style={{
                             display: removeItem,
                         }}
@@ -81,7 +100,7 @@ export function Hero() {
                     </motion.p>
                 </div>
                 <motion.div
-                    className="text-center"
+                    className="text-center absolute flex items-center justify-center"
                     style={{
                         opacity: showNewContent,
                     }}
