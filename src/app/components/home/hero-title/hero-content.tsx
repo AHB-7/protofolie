@@ -10,82 +10,85 @@ export function Hero() {
         offset: ["start start", "end start"],
     });
 
+    // Animations
     const borderRadius = useTransform(
         scrollYProgress,
-        [0, 0.8],
-        ["3rem", "50rem"]
+        [0, 1],
+        ["3rem", "8rem"]
     );
-    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-    const backgroundScroll = useTransform(
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 1]);
+    const width = useTransform(scrollYProgress, [0, 0.8], ["100%", "7rem"]);
+    const height = useTransform(scrollYProgress, [0, 0.8], ["100%", "7rem"]);
+    const backgroundColor = useTransform(
         scrollYProgress,
         [0, 1],
         ["#000000", "#1A1A1D"]
     );
-
-    const dynamicHeight = useTransform(
+    const removeItem = useTransform(
         scrollYProgress,
-        [0, 0.8],
-        ["100%", "4rem"]
-    );
-    const nonDisplay = useTransform(
-        scrollYProgress,
-        [0, 0.7],
+        [0.1, 0.5],
         ["flex", "none"]
     );
-    const display = useTransform(scrollYProgress, [0.7, 1], ["none", "flex"]);
-    const showOpacity = useTransform(scrollYProgress, [0, 0.7], [0, 1]);
+
+    // Content Visibility
+    const showNewContent = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
 
     return (
-        <motion.section
+        <section
+            className="relative h-screen flex items-center mt-3 justify-center"
             ref={ref}
-            className="relative overflow-hidden h-screen flex justify-center mt-[2rem]"
         >
-            {" "}
+            {/* Initial Animated Center Block */}
             <motion.div
-                className=" fixed border flex flex-col gap-4 py-12 mx-auto overflow-hidden max-h-[calc(100vh-8rem)] w-[calc(100%-2rem)] items-center justify-center"
+                className="fixed flex items-center justify-center flex-col border border-white border-opacity-20"
                 style={{
+                    width: "calc(100% - 2rem)",
+                    height: "calc(100% - 2rem)",
                     borderRadius: borderRadius,
-                    backgroundColor: backgroundScroll,
-                    backgroundImage: "url(/images/noise.gif)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundBlendMode: "screen",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    height: dynamicHeight,
+                    opacity: opacity,
+                    background: backgroundColor,
+                    maxWidth: width,
+                    maxHeight: height,
                 }}
             >
-                <div className="flex items-center justify-start flex-col mb-auto">
+                <div className="">
                     <motion.h1
-                        className="text-4xl font-bold text-center z-20 pt-8 md:pt-20"
-                        style={{ opacity, display: nonDisplay }}
+                        className="text-4xl font-bold mb-4"
+                        style={{
+                            display: removeItem,
+                        }}
                     >
-                        Hello, I&apos;m
+                        Hi, I&apos;m
                     </motion.h1>
-                    <motion.div style={{ opacity, display: nonDisplay }}>
+                    <motion.div
+                        style={{
+                            display: removeItem,
+                        }}
+                    >
                         <GlitchedText
                             text="Alan Brim"
-                            class="text-6xl md:text-8xl text-center z-20 py-4"
+                            class="text-6xl font-extrabold"
                         />
                     </motion.div>
                     <motion.p
-                        className="text-center text-xl px-2 z-20 tracking-widest uppercase leading-8"
-                        style={{ opacity, display: nonDisplay }}
-                    >
-                        I&apos;m a Front-end Developer Loves new technologies
-                        and web development.
-                    </motion.p>
-                </div>
-                <motion.div className=" text-center z-20 font-extrabold tracking-widest uppercase justify-center mb-auto text-5xl">
-                    <motion.h2
+                        className="text-lg mt-2"
                         style={{
-                            opacity: showOpacity,
-                            display: display,
+                            display: removeItem,
                         }}
                     >
-                        ... Skills ...
-                    </motion.h2>
+                        A front-end developer with a passion for creating
+                        seamless UI and UX designs.
+                    </motion.p>
+                </div>
+                <motion.div
+                    className="text-center"
+                    style={{
+                        opacity: showNewContent,
+                    }}
+                >
+                    <h2 className="text-4xl font-bold">Skills</h2>
                 </motion.div>
             </motion.div>
-        </motion.section>
+        </section>
     );
 }

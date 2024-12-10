@@ -2,7 +2,6 @@
 import { Hero } from "./components/home/hero-title/hero-content";
 import { ProfessionalSummary } from "./components/home/summary/professional-summary";
 import { ProfileImage } from "./components/home/image/profile-image";
-import { Skills } from "./components/home/skills/skills";
 // import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
 
@@ -19,8 +18,10 @@ export default function Home() {
 
     return (
         <motion.body
+            className="flex flex-col items-center justify-start w-full"
             style={{
                 background: backgroundScroll,
+                height: "300rem",
             }}
         >
             {/* <Nav /> */}
@@ -28,7 +29,6 @@ export default function Home() {
                 <Hero />
                 <ProfileImage />
                 <ProfessionalSummary />
-                <Skills />
             </main>
         </motion.body>
     );

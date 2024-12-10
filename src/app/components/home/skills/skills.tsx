@@ -18,18 +18,20 @@ export function Skills() {
         target: ref,
         offset: ["start 80%", "100% 100%"],
     });
-    const opacity = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
 
     const skills = [
         {
             name: "JavaScript",
             level: 75,
             icon: <FaJsSquare size={32} color="#f7df1e" />,
+            style: { opacity: useTransform(scrollYProgress, [0.5, 1], [0, 1]) },
+            trans: { duration: 0.5 },
         },
         {
             name: "React",
             level: 60,
             icon: <FaReact size={32} color="#61dafb" />,
+            style: { opacity: useTransform(scrollYProgress, [0.7, 1], [0, 1]) },
         },
         {
             name: "HTML5",
@@ -165,15 +167,15 @@ export function Skills() {
     return (
         <section
             ref={ref}
-            className=" h-screen w-screen flex flex-col items-center justify-center p-3"
+            className="h-full w-full flex flex-col items-center justify-center p-3"
         >
             <motion.div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4">
                 {skills.map((skill, index) => (
                     <motion.div
                         key={index}
                         className="flex flex-col items-center justify-center z-20 "
-                        style={{ opacity }}
-                        transition={{ delay: 0.5 }}
+                        style={skill.style}
+                        transition={skill.trans}
                     >
                         <div className="relative w-24 h-24">
                             <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">

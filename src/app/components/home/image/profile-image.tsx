@@ -15,10 +15,14 @@ export function ProfileImage() {
     const imageScale = useTransform(
         scrollYProgress,
         [0, 0.35, 0.35, 1],
-        [0.6, 0.4, 0.4, 0.4]
+        [0.4, 0.3, 0.3, 0.3]
     );
     const saturate = useTransform(scrollYProgress, [0, 1], [1, 0]);
-    const brightness = useTransform(scrollYProgress, [0, 1], [1, 0]);
+    const brightness = useTransform(
+        scrollYProgress,
+        [0, 0.35, 0.35, 1],
+        [1, 0, 0, 0]
+    );
     const filter = useMotionTemplate`brightness(${brightness}) saturate(${saturate})`;
 
     return (
