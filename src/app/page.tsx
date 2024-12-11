@@ -4,6 +4,7 @@ import { ProfessionalSummary } from "./components/home/summary/professional-summ
 import { ProfileImage } from "./components/home/image/profile-image";
 // import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
+import { Skills } from "./components/home/skills/skills";
 
 export default function Home() {
     const { scrollYProgress } = useScroll();
@@ -20,7 +21,7 @@ export default function Home() {
 
     return (
         <motion.body
-            className="flex flex-col items-center justify-start w-full"
+            className="flex flex-col items-center justify-start w-full "
             style={{
                 background: backgroundScroll,
                 height: "300rem",
@@ -30,6 +31,7 @@ export default function Home() {
             <main>
                 <Hero />
                 <ProfileImage />
+                <Skills />
                 <ProfessionalSummary />
             </main>
         </motion.body>

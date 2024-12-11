@@ -3,6 +3,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { GlitchedText } from "../../global/glitch/glitch";
 import { useRef } from "react";
+import { FiPhoneCall } from "react-icons/fi";
+import { FaLinkedinIn } from "react-icons/fa";
+import { VscGithubAlt } from "react-icons/vsc";
 
 export function Hero() {
     const ref = useRef(null);
@@ -18,8 +21,8 @@ export function Hero() {
         ["3rem", "1rem"]
     );
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 1]);
-    const width = useTransform(scrollYProgress, [0, 0.8], ["100%", "24rem"]);
-    const height = useTransform(scrollYProgress, [0, 0.8], ["100%", "7rem"]);
+    const width = useTransform(scrollYProgress, [0, 0.8], ["100%", "14rem"]);
+    const height = useTransform(scrollYProgress, [0, 0.8], ["100%", "4rem"]);
     const backgroundColor = useTransform(
         scrollYProgress,
         [0, 0.8],
@@ -30,30 +33,17 @@ export function Hero() {
     );
     const removeItem = useTransform(
         scrollYProgress,
-        [0.1, 0.69],
+        [0.1, 0.6],
         ["flex", "none"]
     );
 
-    const showNewContent = useTransform(scrollYProgress, [0.78, 0.8], [0, 1]);
-
-    const toLeftOne = useTransform(
-        scrollYProgress,
-        [0.83, 0.9],
-        ["-200%", "0%"]
-    );
-    const toLeftTow = useTransform(
-        scrollYProgress,
-        [0.83, 0.9],
-        ["100%", "0%"]
-    );
-    const toTopOne = useTransform(scrollYProgress, [0.83, 0.9], ["360%", "0%"]);
     return (
         <section
-            className="relative h-screen flex items-center mt-3 justify-center"
+            className="relative h-screen flex items-start mt-3 justify-center"
             ref={ref}
         >
             <motion.div
-                className="fixed z-0"
+                className="fixed z-0  max-w-[40rem] mx-auto"
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
@@ -67,6 +57,7 @@ export function Hero() {
                     maxHeight: height,
                     borderRadius: borderRadius,
                     filter: "blur(5px)",
+                    display: removeItem,
                 }}
             ></motion.div>
             <motion.div
@@ -76,12 +67,12 @@ export function Hero() {
                     height: "calc(100% - 2rem)",
                     borderRadius: borderRadius,
                     background: backgroundColor,
-                    opacity: opacity,
+                    // opacity: opacity,
                     maxWidth: width,
                     maxHeight: height,
                 }}
             >
-                <div className=" flex items-center flex-col justify-center mb-20">
+                <div className=" flex items-center flex-col justify-center ">
                     <motion.h1
                         className="text-2xl font-bold -mb-3"
                         style={{
@@ -110,9 +101,9 @@ export function Hero() {
                         <span>
                             A<span> </span>
                             <span className=" text-pink-600">
-                                front-end developer
+                                Front-end developer
                             </span>{" "}
-                            with a passion for
+                            passionate
                         </span>
                         <span>
                             <span className="text-green-600">UI</span> and
@@ -121,90 +112,19 @@ export function Hero() {
                     </motion.p>
                 </div>
                 <motion.div
-                    className="text-center absolute flex items-center justify-center "
-                    style={{
-                        opacity: showNewContent,
-                    }}
+                    className="
+                flex items-center justify-between w-fit gap-2 mx-auto py-4"
                 >
-                    <motion.p
-                        className="flex items-start justify-start gap-1 flex-col text-md text-center bg-zinc-950 rounded-xl px-4 py-2
-                        bg-opacity-80"
-                    >
-                        <span className="text-start text-lg">
-                            Experienced in creating
-                            <span className=" text-pink-600">
-                                <span> </span>responsive, dynamic websites
-                            </span>
-                            <span>
-                                <span> </span>
-                                using modern
-                                <span className="text-green-600">
-                                    <span> </span>
-                                    frameworks and technologies
-                                </span>
-                            </span>
-                        </span>
-                    </motion.p>
+                    <div className=" bg-zinc-900 p-3 rounded-full">
+                        <FiPhoneCall className="text-2xl" />
+                    </div>
+                    <div className=" bg-zinc-900 p-3 rounded-full">
+                        <FaLinkedinIn className="text-2xl" />
+                    </div>
+                    <div className=" bg-zinc-900 p-3 rounded-full">
+                        <VscGithubAlt className="text-2xl" />
+                    </div>
                 </motion.div>
-            </motion.div>
-            <motion.div
-                className="fixed top-0 w-full h-full -z-10"
-                style={{
-                    opacity: showNewContent,
-                }}
-            >
-                <motion.p
-                    className="absolute top-[20%] left-[20%] max-w-[20rem] bg-zinc-950 flex items-start justify-start gap-1 flex-col text-md text-center rounded-xl px-4 py-2"
-                    style={{
-                        x: toLeftOne,
-                    }}
-                >
-                    <span className="text-start text-md text-nowrap">
-                        <span className="text-pink-600">Design</span>
-                    </span>
-                </motion.p>
-                <motion.p
-                    className="absolute top-[30%] left-[40%] max-w-[20rem] bg-zinc-950 flex items-start justify-start gap-1 flex-col text-md text-center rounded-xl px-4 py-2 -z-0"
-                    style={{
-                        y: toTopOne,
-                    }}
-                >
-                    <span className="text-start text-md text-nowrap">
-                        <span className="text-green-600">front-end</span>
-                    </span>
-                </motion.p>
-                <motion.p
-                    className="absolute top-[60%] left-[50%] max-w-[20rem] bg-zinc-950 flex items-start justify-start gap-1 flex-col text-md text-center rounded-xl px-4 py-2"
-                    style={{
-                        x: toLeftTow,
-                    }}
-                >
-                    <span className="text-start text-md text-nowrap">
-                        <span className="text-green-600">
-                            ContentMangegrent
-                        </span>
-                    </span>
-                </motion.p>
-                <motion.p
-                    className="absolute top-[70%] left-[10%] max-w-[20rem] bg-zinc-950 flex items-start justify-start gap-1 flex-col text-md text-center rounded-xl px-4 py-2"
-                    style={{
-                        x: toLeftOne,
-                    }}
-                >
-                    <span className="text-start text-md text-nowrap">
-                        <span className="text-blue-500">CMS</span>
-                    </span>
-                </motion.p>
-                <motion.p
-                    className="absolute top-[10%] left-[60%] max-w-[20rem] bg-zinc-950 flex items-start justify-start gap-1 flex-col text-md text-center rounded-xl px-4 py-2"
-                    style={{
-                        x: toLeftTow,
-                    }}
-                >
-                    <span className="text-start text-md text-nowrap">
-                        <span className="text-blue-500">usersExperience</span>
-                    </span>
-                </motion.p>
             </motion.div>
         </section>
     );
