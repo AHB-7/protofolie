@@ -1,7 +1,5 @@
 "use client";
 import {
-    animate,
-    inView,
     motion,
     useAnimation,
     useInView,
@@ -16,34 +14,36 @@ import {
     FaCss3Alt,
     FaBootstrap,
 } from "react-icons/fa";
-import { useEffect, useRef } from "react";
-import { body, tr } from "framer-motion/client";
+import { useRef, useEffect } from "react";
 
-export function Skills() {
+type Skill = {
+    name: string;
+    level: number;
+    icon: JSX.Element;
+};
+// Individual SkillCard Component
+function SkillCard({ skill, index }: { skill: Skill; index: number }) {
+    const rowDirection = Math.floor(index / 4) % 2 === 0 ? 100 : -100; // Alternating row direction
     const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start center", "end start"],
-    });
-    const newRef = useRef(null);
-    const inView = useInView(newRef, {
-        once: true,
-    });
+    const inView = useInView(ref, { once: true, margin: "-200px" });
     const animate = useAnimation();
+
     useEffect(() => {
         if (inView) {
             animate.start({
                 x: 0,
+                opacity: 1,
                 transition: {
                     type: "spring",
                     duration: 1,
-                    bounce: 0.3,
-                    delay: 0.5,
+                    bounce: 0.5,
+                    delay: (index % 4) * 0.2, // Stagger within the row
                 },
             });
         } else {
             animate.start({
-                x: -100,
+                x: rowDirection,
+                opacity: 0,
                 transition: {
                     type: "spring",
                     duration: 1,
@@ -51,10 +51,66 @@ export function Skills() {
                 },
             });
         }
-    }, [inView, animate]);
+    }, [inView, animate, rowDirection, index]);
+
+    return (
+        <motion.div
+            ref={ref}
+            animate={animate}
+            className="flex flex-col items-center justify-center p-2 rounded-lg"
+        >
+            <div className="relative w-20 h-20">
+                <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                    <circle
+                        cx="50%"
+                        cy="50%"
+                        r="40%"
+                        fill="none"
+                        stroke="rgb(255, 255, 255, 0.7)"
+                        strokeWidth="8"
+                    />
+                    <motion.circle
+                        cx="50%"
+                        cy="50%"
+                        r="40%"
+                        fill="none"
+                        stroke="rgb(13,63,74,1)"
+                        strokeWidth="9"
+                        strokeDasharray="251.2"
+                        strokeDashoffset="251.2"
+                        strokeLinecap="round"
+                        className="circle-progress"
+                        whileInView={{
+                            strokeDashoffset:
+                                251.2 - 251.2 * (skill.level / 100),
+                        }}
+                        transition={{
+                            duration: 1.5,
+                            ease: "easeInOut",
+                        }}
+                    />
+                </svg>
+
+                <div className="absolute inset-0 flex items-center justify-center">
+                    {skill.icon}
+                </div>
+            </div>
+            <p className="mt-2 text-center font-medium text-white">
+                {skill.name}
+            </p>
+        </motion.div>
+    );
+}
+
+// Main Skills Component
+export function Skills() {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start center", "end start"],
+    });
+
     const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-    const itemsOpacity = useTransform(scrollYProgress, [0.18, 0.25], [0, 1]);
-    const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
 
     const skills = [
         {
@@ -86,7 +142,12 @@ export function Skills() {
             name: "TypeScript",
             level: 75,
             icon: (
-                <Image src="/icons/ts.svg" alt="asd" width={32} height={32} />
+                <Image
+                    src="/icons/ts.svg"
+                    alt="TypeScript"
+                    width={32}
+                    height={32}
+                />
             ),
         },
         {
@@ -95,19 +156,23 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/nextjs.svg"
-                    alt="asd"
+                    alt="Next.js"
                     width={32}
                     height={32}
-                    className=" bg-white rounded-full"
+                    className="bg-white rounded-full"
                 />
             ),
         },
-
         {
             name: "SASS",
             level: 80,
             icon: (
-                <Image src="/icons/sass.svg" alt="asd" width={32} height={32} />
+                <Image
+                    src="/icons/sass.svg"
+                    alt="SASS"
+                    width={32}
+                    height={32}
+                />
             ),
         },
         {
@@ -116,7 +181,7 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/tailwind.svg"
-                    alt="asd"
+                    alt="Tailwind"
                     width={32}
                     height={32}
                 />
@@ -128,10 +193,10 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/styled-components.svg"
-                    alt="asd"
+                    alt="Styled-Components"
                     width={32}
                     height={32}
-                    className=" bg-white"
+                    className="bg-white"
                 />
             ),
         },
@@ -141,7 +206,7 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/framer-motion.svg"
-                    alt="asd"
+                    alt="Framer Motion"
                     width={32}
                     height={32}
                 />
@@ -153,10 +218,10 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/figma.svg"
-                    alt="asd"
+                    alt="Figma"
                     width={32}
                     height={32}
-                    className="p-1`"
+                    className="p-1"
                 />
             ),
         },
@@ -166,7 +231,7 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/adobe-xd.svg"
-                    alt="asd"
+                    alt="Adobe XD"
                     width={32}
                     height={32}
                 />
@@ -178,7 +243,7 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/wordpress.svg"
-                    alt="asd"
+                    alt="WordPress"
                     width={32}
                     height={32}
                 />
@@ -190,7 +255,7 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/hygraph.jpeg"
-                    alt="asd"
+                    alt="Hygraph"
                     width={32}
                     height={32}
                 />
@@ -202,7 +267,7 @@ export function Skills() {
             icon: (
                 <Image
                     src="/icons/supabase.svg"
-                    alt="asd"
+                    alt="Supabase"
                     width={32}
                     height={32}
                 />
@@ -225,109 +290,11 @@ export function Skills() {
                 </p>
             </motion.div>
 
-            <motion.div
-                className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden"
-                initial="hidden"
-                animate="visible"
-                ref={newRef}
-                variants={{
-                    hidden: { opacity: 0, y: 50 },
-                    visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                            staggerChildren: 0.2,
-                        },
-                    },
-                }}
-            >
-                {skills.map((skill, index) => {
-                    const rowDirection =
-                        Math.floor(index / 4) % 2 === 0 ? 100 : -100; // Alternating row direction
-
-                    const ref = useRef(null);
-                    const inView = useInView(ref, {
-                        once: true,
-                        margin: "-200px",
-                    });
-                    const animate = useAnimation();
-
-                    useEffect(() => {
-                        if (inView) {
-                            animate.start({
-                                x: 0,
-                                opacity: 1,
-                                transition: {
-                                    type: "spring",
-                                    duration: 1,
-                                    bounce: 0.5,
-                                    delay: (index % 4) * 0.2,
-                                },
-                            });
-                        } else {
-                            animate.start({
-                                x: rowDirection,
-                                opacity: 0,
-                                transition: {
-                                    type: "spring",
-                                    duration: 1,
-                                    bounce: 0.3,
-                                },
-                            });
-                        }
-                    }, [inView, animate, rowDirection]);
-
-                    return (
-                        <motion.div
-                            ref={ref}
-                            animate={animate}
-                            key={index}
-                            className="flex flex-col items-center justify-center p-2 rounded-lg"
-                        >
-                            <div className="relative w-20 h-20">
-                                <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
-                                    <circle
-                                        cx="50%"
-                                        cy="50%"
-                                        r="40%"
-                                        fill="none"
-                                        stroke="rgb(255, 255, 255, 0.7)"
-                                        strokeWidth="8"
-                                    />
-                                    <motion.circle
-                                        cx="50%"
-                                        cy="50%"
-                                        r="40%"
-                                        fill="none"
-                                        stroke="rgb(13,63,74,1)"
-                                        strokeWidth="9"
-                                        strokeDasharray="251.2"
-                                        strokeDashoffset="251.2"
-                                        strokeLinecap="round"
-                                        className="circle-progress"
-                                        whileInView={{
-                                            strokeDashoffset:
-                                                251.2 -
-                                                251.2 * (skill.level / 100),
-                                        }}
-                                        transition={{
-                                            duration: 1.5,
-                                            ease: "easeInOut",
-                                        }}
-                                    />
-                                </svg>
-
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    {skill.icon}
-                                </div>
-                            </div>
-                            <p className="mt-2 text-center font-medium text-white">
-                                {skill.name}
-                            </p>
-                        </motion.div>
-                    );
-                })}
-            </motion.div>
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden">
+                {skills.map((skill, index) => (
+                    <SkillCard key={index} skill={skill} index={index} />
+                ))}
+            </div>
         </section>
     );
 }
