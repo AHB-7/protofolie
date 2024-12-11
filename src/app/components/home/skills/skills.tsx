@@ -9,18 +9,17 @@ import {
     FaBootstrap,
 } from "react-icons/fa";
 import { useRef } from "react";
-import { style } from "framer-motion/client";
 
 export function Skills() {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start end", "start center"],
+        offset: ["start center", "end start"],
     });
 
     // Create parallax and fade-in effects
     // const yOffset = useTransform(scrollYProgress, [0, 1], ["0px", "150px"]);
-    const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
     const skills = [
         {
@@ -212,6 +211,9 @@ export function Skills() {
                             transition: {
                                 duration: 0.5,
                             },
+                        }}
+                        style={{
+                            opacity: opacity,
                         }}
                     >
                         <div className="relative w-20 h-20">
