@@ -42,14 +42,15 @@ export function Hero() {
             ref={ref}
         >
             <motion.div
-                className="fixed z-0 blur-sm"
+                className="fixed z-0 blur-sm "
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
                     backgroundImage: "url(/images/way.gif)",
-                    backgroundSize: "100% 100%",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
+                    backgroundPositionX: "center",
+                    backgroundSize: "cover",
                     opacity: opacity,
                     maxWidth: width,
                     maxHeight: height,
@@ -57,7 +58,7 @@ export function Hero() {
                 }}
             ></motion.div>
             <motion.div
-                className="fixed flex items-center justify-center flex-col border border-white border-opacity-20"
+                className="fixed flex items-center justify-center flex-col border border-white border-opacity-20 "
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
@@ -66,7 +67,6 @@ export function Hero() {
                     opacity: opacity,
                     maxWidth: width,
                     maxHeight: height,
-                    objectFit: "cover",
                 }}
             >
                 <div className=" flex items-center flex-col justify-center mb-12">
