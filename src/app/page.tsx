@@ -9,10 +9,12 @@ export default function Home() {
     const { scrollYProgress } = useScroll();
     const backgroundScroll = useTransform(
         scrollYProgress,
-        [0, 1],
+        [0, 0.05, 0.1, 1],
         [
-            " linear-gradient(0deg, rgba(20,43,45,1) 35%, rgba(14,4,1,1) 100%)",
-            "linear-gradient(0deg, rgba(17,35,37,1) 35%, rgba(14,4,1,1) 100%)",
+            "linear-gradient(0deg, rgba(74,74,77,1) 0%, rgba(0,0,0,1) 100%)",
+            "linear-gradient(0deg, rgba(74,74,77,1) 0%, rgba(0,0,0,1) 100%)",
+            "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(25,25,26,1) 100%)",
+            "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(25,25,26,1) 100%);",
         ]
     );
 
