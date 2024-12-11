@@ -1,8 +1,6 @@
 "use client";
-import { useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { motion } from "framer-motion";
-
 import {
     FaJsSquare,
     FaReact,
@@ -11,27 +9,29 @@ import {
     FaBootstrap,
 } from "react-icons/fa";
 import { useRef } from "react";
+import { style } from "framer-motion/client";
 
 export function Skills() {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start 80%", "100% 100%"],
+        offset: ["start end", "start center"],
     });
+
+    // Create parallax and fade-in effects
+    // const yOffset = useTransform(scrollYProgress, [0, 1], ["0px", "150px"]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
     const skills = [
         {
             name: "JavaScript",
             level: 75,
             icon: <FaJsSquare size={32} color="#f7df1e" />,
-            style: { opacity: useTransform(scrollYProgress, [0.5, 1], [0, 1]) },
-            trans: { duration: 0.5 },
         },
         {
             name: "React",
             level: 60,
             icon: <FaReact size={32} color="#61dafb" />,
-            style: { opacity: useTransform(scrollYProgress, [0.7, 1], [0, 1]) },
         },
         {
             name: "HTML5",
@@ -66,6 +66,9 @@ export function Skills() {
                     height={32}
                 />
             ),
+            style: {
+                backgroundColor: "rgb(255, 255, 255, 0.8)",
+            },
         },
 
         {
@@ -89,6 +92,9 @@ export function Skills() {
                     height={32}
                 />
             ),
+            style: {
+                backgroundColor: "rgb(255, 255, 255, 0.8)",
+            },
         },
         {
             name: "Framer Motion",
@@ -167,39 +173,78 @@ export function Skills() {
     return (
         <section
             ref={ref}
-            className="h-full w-full flex flex-col items-center justify-center p-3"
+            className="relative w-full flex-wrap -mt-24 flex flex-col items-start justify-center"
         >
-            <motion.div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4">
+            <motion.div
+                style={{ opacity }}
+                className="mb-6 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start ml-2"
+            >
+                <h2 className="text-3xl font-bold text-pink-600">Skills</h2>
+                <p className="text-lg">
+                    Those are some of the skills I gained in my journey
+                </p>
+            </motion.div>
+
+            <motion.div
+                className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-2"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                            staggerChildren: 0.2,
+                        },
+                    },
+                }}
+            >
                 {skills.map((skill, index) => (
                     <motion.div
                         key={index}
-                        className="flex flex-col items-center justify-center z-20 "
-                        style={skill.style}
-                        transition={skill.trans}
+                        className="flex flex-col items-center justify-center p-2 rounded-lg"
+                        whileHover={{
+                            scale: 1.1,
+                            rotate: [0, 5, -5, 0],
+                        }}
+                        animate={{
+                            transition: {
+                                duration: 0.5,
+                            },
+                        }}
                     >
-                        <div className="relative w-24 h-24">
+                        <div className="relative w-20 h-20">
                             <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
                                 <circle
                                     cx="50%"
                                     cy="50%"
                                     r="40%"
                                     fill="none"
-                                    stroke="#444"
+                                    stroke="rgb(255, 255, 255, 0.7)"
                                     strokeWidth="8"
                                 />
-                                <circle
+                                <motion.circle
                                     cx="50%"
                                     cy="50%"
                                     r="40%"
-                                    fill="none"
-                                    stroke="#6c63ff"
-                                    strokeWidth="8"
-                                    strokeDasharray="251.2"
-                                    strokeDashoffset={
-                                        251.2 - (251.2 * skill.level) / 100
+                                    fill={
+                                        skill.style?.backgroundColor || "none"
                                     }
+                                    stroke="rgb(22, 163, 74, 1)"
+                                    strokeWidth="9"
+                                    strokeDasharray="251.2"
+                                    strokeDashoffset="251.2"
                                     strokeLinecap="round"
                                     className="circle-progress"
+                                    whileInView={{
+                                        strokeDashoffset:
+                                            251.2 - 251.2 * (skill.level / 100),
+                                    }}
+                                    transition={{
+                                        duration: 1.5,
+                                        ease: "easeInOut",
+                                    }}
                                 />
                             </svg>
 
@@ -207,7 +252,7 @@ export function Skills() {
                                 {skill.icon}
                             </div>
                         </div>
-                        <p className="mt-2 text-center font-medium">
+                        <p className="mt-2 text-center font-medium text-white">
                             {skill.name}
                         </p>
                     </motion.div>

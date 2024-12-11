@@ -24,24 +24,28 @@ export function ProfileImage() {
         [1, 0, 0, 0]
     );
     const filter = useMotionTemplate`brightness(${brightness}) saturate(${saturate})`;
+    const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
     return (
-        <motion.div
-            className="fixed h-full w-full z-10 bottom-0 left-0 "
-            style={{
-                scale: imageScale,
-                transformOrigin: "bottom",
-                filter: filter,
-            }}
-        >
-            <Image
-                src="/images/profile-gj.png"
-                alt="profile image"
-                priority
-                fill
-                sizes="auto"
-                className="object-cover w-full h-full overflow-visible max-w-[42rem] mx-auto"
-            />
-        </motion.div>
+        <section className="relative flex items-start mt-3 justify-center">
+            <motion.div
+                className="fixed h-full w-full bottom-0 left-0"
+                style={{
+                    scale: imageScale,
+                    transformOrigin: "bottom",
+                    filter: filter,
+                    opacity,
+                }}
+            >
+                <Image
+                    src="/images/profile-gj.png"
+                    alt="profile image"
+                    priority
+                    fill
+                    sizes="auto"
+                    className="object-cover w-full h-full overflow-visible max-w-[42rem] mx-auto"
+                />
+            </motion.div>
+        </section>
     );
 }

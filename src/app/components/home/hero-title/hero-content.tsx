@@ -39,7 +39,7 @@ export function Hero() {
 
     return (
         <section
-            className="relative h-screen flex items-start mt-3 justify-center"
+            className="relative h-full flex items-start mt-3 justify-center"
             ref={ref}
         >
             <motion.div
@@ -92,7 +92,7 @@ export function Hero() {
                         />
                     </motion.div>
                     <motion.p
-                        className="flex items-start justify-start gap-1 flex-col text-md mt-2 text-center bg-zinc-950 rounded-xl px-4 py-2
+                        className="flex items-end justify-start gap-1 flex-col text-md mt-2 text-center bg-gradient-to-br from-slate-900 to-zinc-950  rounded-xl px-4 py-2
                         bg-opacity-80"
                         style={{
                             display: removeItem,
@@ -100,21 +100,23 @@ export function Hero() {
                     >
                         <span>
                             A<span> </span>
-                            <span className=" text-pink-600">
+                            <span className=" text-pink-600 ">
                                 Front-end developer
                             </span>{" "}
                             passionate
                         </span>
                         <span>
-                            <span className="text-green-600">UI</span> and
-                            <span className="text-green-600"> UX</span> designs.
+                            <span className="text-green-600 text-xl">UI</span>{" "}
+                            and
+                            <span className="text-green-600 text-xl">
+                                {" "}
+                                UX
+                            </span>{" "}
+                            designs.
                         </span>
                     </motion.p>
                 </div>
-                <motion.div
-                    className="
-                flex items-center justify-between w-fit gap-2 mx-auto py-4"
-                >
+                <motion.div className="flex items-center justify-between w-fit gap-2 mx-auto py-4">
                     <div className=" bg-zinc-900 p-3 rounded-full">
                         <FiPhoneCall className="text-2xl" />
                     </div>
