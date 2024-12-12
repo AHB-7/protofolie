@@ -1,8 +1,8 @@
 "use client";
 import {
     motion,
-    useAnimation,
-    useInView,
+    // useAnimation,
+    // useInView,
     useScroll,
     useTransform,
 } from "framer-motion";
@@ -22,10 +22,10 @@ type Skill = {
     icon: JSX.Element;
 };
 // Individual SkillCard Component
-function SkillCard({ skill, index }: { skill: Skill; index: number }) {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: "-200px" });
-    const animate = useAnimation();
+function SkillCard({ skill }: { skill: Skill }) {
+    // const ref = useRef(null);
+    // const inView = useInView(ref, { once: true, margin: "-200px" });
+    // const animate = useAnimation();
 
     return (
         <motion.div
