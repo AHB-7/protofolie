@@ -20,8 +20,9 @@ import { jetBrains } from "@/app/fonts/fonts";
 type Skill = {
     name: string;
     level: number;
-    icon: JSX.Element;
+    icon?: JSX.Element;
 };
+
 // Individual SkillCard Component
 function SkillCard({ skill }: { skill: Skill }) {
     // const ref = useRef(null);
@@ -31,7 +32,7 @@ function SkillCard({ skill }: { skill: Skill }) {
     return (
         <motion.div
             // ref={ref}
-            className="flex items-start justify-start flex-row gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20"
+            className="flex items-start justify-center flex-row gap-2 py-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20 w-full"
         >
             <div className="relative w-10 h-10 ">
                 <svg className="absolute top-0 left-0 w-full h-full">
@@ -40,7 +41,7 @@ function SkillCard({ skill }: { skill: Skill }) {
                         cy="50%"
                         r="40%"
                         fill="none"
-                        stroke="rgb(255, 255, 255, 0.7)"
+                        stroke="#c3ff3d"
                         strokeWidth="3"
                     />
                     <motion.circle
@@ -55,6 +56,7 @@ function SkillCard({ skill }: { skill: Skill }) {
                         origin={0}
                         strokeLinecap="round"
                         className="circle-progress"
+                        style={{ rotate: "-90deg", transformOrigin: "center" }}
                         transition={{
                             duration: 1.5,
                             ease: "easeInOut",
@@ -62,10 +64,10 @@ function SkillCard({ skill }: { skill: Skill }) {
                     />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                    {skill.icon}
+                    {skill.icon ? skill.icon : null}
                 </div>
             </div>
-            <p className="mt-2 text-center font-medium text-white">
+            <p className="mt-2 text-start font-medium text-white flex-1">
                 {skill.name}
             </p>
         </motion.div>
@@ -158,7 +160,7 @@ export function Skills() {
             ),
         },
         {
-            name: "Styled-Components",
+            name: "Styled-Comp...",
             level: 80,
             icon: (
                 <Image
@@ -243,12 +245,28 @@ export function Skills() {
                 />
             ),
         },
+        {
+            name: "English",
+            level: 100,
+        },
+        {
+            name: "Norwegian",
+            level: 100,
+        },
+        {
+            name: "Arabic",
+            level: 100,
+        },
+        {
+            name: "Kurdish",
+            level: 100,
+        },
     ];
 
     return (
         <section
             ref={ref}
-            className="relative w-full flex-wrap -mt-24 flex flex-col items-start justify-center"
+            className="relative w-full flex-wrap -mt-24 flex flex-col items-start justify-center px-2"
         >
             <motion.div
                 style={{ opacity }}
@@ -265,33 +283,39 @@ export function Skills() {
                         <br /> )<span className="text-pink-600">{"}"};</span>
                     </p>
                 </h2>
+                <div className=" absolute top-2 right-4 opacity-90">
+                    {" "}
+                    {`**`}{" "}
+                </div>
             </motion.div>
             <motion.div
                 style={{ opacity }}
-                className={`${jetBrains.className} bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
+                className={`${jetBrains.className} relative bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
                 <h2 className="text-md md:text-lg text-yellow-500 py-4">
-                    <ul className="list-inside">
-                        <li> Teknologis : </li>
-                    </ul>
-                </h2>
+                    Teknologis :
+                </h2>{" "}
+                <div className=" absolute top-2 right-2"> {`***`} </div>
             </motion.div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden mx-2 py-6 ">
-                {skills.map((skill, index) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 overflow-hidden py-6  w-full">
+                {skills.slice(0, -4).map((skill, index) => (
                     <SkillCard key={index} skill={skill} />
-                    // index={index}
                 ))}
             </div>
             <motion.div
                 style={{ opacity }}
-                className={`${jetBrains.className} bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
+                className={`${jetBrains.className} relative bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
                 <h2 className="text-md md:text-lg text-yellow-500 py-4">
-                    <ul>
-                        <li> Languages : </li>
-                    </ul>{" "}
-                </h2>
+                    Languages :
+                </h2>{" "}
+                <div className=" absolute top-2 right-2"> {`***`} </div>
             </motion.div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden py-6 w-full">
+                {skills.slice(-4).map((skill, index) => (
+                    <SkillCard key={index} skill={skill} />
+                ))}
+            </div>
         </section>
     );
 }
