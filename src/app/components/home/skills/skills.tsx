@@ -34,7 +34,7 @@ function SkillCard({ skill }: { skill: Skill }) {
             // ref={ref}
             className="flex items-start justify-center flex-row gap-2 py-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20 w-full"
         >
-            <div className="relative w-10 h-10 ">
+            <div className="relative w-10 h-10">
                 <svg className="absolute top-0 left-0 w-full h-full">
                     <circle
                         cx="50%"

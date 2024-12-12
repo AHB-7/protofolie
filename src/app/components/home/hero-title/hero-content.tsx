@@ -48,7 +48,7 @@ export function Hero() {
                 className="fixed z-0  max-w-[40rem] mx-auto "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
@@ -81,7 +81,7 @@ export function Hero() {
                         className="text-2xl font-bold -mb-3 justify-self-end"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0.3 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
                         style={{
                             display: removeItem,
                         }}
@@ -92,20 +92,20 @@ export function Hero() {
                         className="flex items-center justify-center"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0.5 }}
+                        transition={{ duration: 0.3, delay: 0.5 }}
                         style={{
                             display: removeItem,
                         }}
                     >
                         <GlitchedText
                             text="Alan Brim"
-                            class="text-[4.5rem] font-extrabold "
+                            class="text-[4.3rem] font-extrabold "
                         />
                     </motion.div>
                     <motion.div
-                        initial={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: 400 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0.7 }}
+                        transition={{ duration: 0.3, delay: 0.9 }}
                         style={{ display: removeItem }}
                         className={`${jetBrains.className} relative mb-8 bg-gradient-to-br from-gray-900 to-zinc-900 p-4 rounded-xl text-start max-w-[23.5rem] mr-auto  border border-[#6663fd] border-opacity-20`}
                     >
@@ -117,6 +117,7 @@ export function Hero() {
                                 <span className="text-textColor">{"("}</span>
                             </span>
                             <span className=" text-md md:text-lg font-normal text-textColor tracking-widest leading-10">
+                                <br />
                                 <span className="underline underline-offset-4">
                                     Front-end Developer
                                 </span>{" "}
@@ -136,7 +137,7 @@ export function Hero() {
                     className="flex items-center justify-between w-fit gap-2 mx-auto py-4"
                     initial={{ opacity: 0, y: 120 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: 0.7 }}
+                    transition={{ duration: 0.4, delay: 1 }}
                 >
                     <div className=" bg-zinc-900 p-3 rounded-full">
                         <FiPhoneCall className="text-2xl" />
