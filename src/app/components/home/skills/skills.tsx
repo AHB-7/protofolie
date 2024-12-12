@@ -15,6 +15,7 @@ import {
     FaBootstrap,
 } from "react-icons/fa";
 import { useRef } from "react";
+import { jetBrains } from "@/app/fonts/fonts";
 
 type Skill = {
     name: string;
@@ -251,40 +252,44 @@ export function Skills() {
         >
             <motion.div
                 style={{ opacity }}
-                className="mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20"
+                className={`${jetBrains.className} mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
-                <h2 className="text-2xl font-bold text-pink-600">
+                <h2 className="text-md md:text-lg font-bold text-pink-600">
                     {" "}
                     Skills ( ) {"{"}{" "}
-                    <p className="text-xl font-normal text-green-600 tracking-widest">
-                        return
+                    <p className="text-md md:text-lg font-normal text-green-600 tracking-widest">
+                        return <span className="text-textColor">{"("}</span>
                     </p>
-                    <p className="text-xl font-normal text-textColor">
-                        {"{"} <br /> &quot; Those are some of the skills I
-                        gained in my journey &quot; <br /> {"}"}
+                    <p className="text-md md:text-lg font-normal text-textColor">
+                        Those are some of the skills I gained in my journey
+                        <br /> )<span className="text-pink-600">{"}"};</span>
                     </p>
                 </h2>
             </motion.div>
             <motion.div
                 style={{ opacity }}
-                className="bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20"
+                className={`${jetBrains.className} bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
-                <h2 className="text-2xl font-bold text-green-600 py-4">
-                    Teknologis :
+                <h2 className="text-md md:text-lg text-yellow-500 py-4">
+                    <ul className="list-inside">
+                        <li> Teknologis : </li>
+                    </ul>
                 </h2>
             </motion.div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden mx-2 py-6 ">
                 {skills.map((skill, index) => (
                     <SkillCard key={index} skill={skill} />
-                    // index={index} 
+                    // index={index}
                 ))}
             </div>
             <motion.div
                 style={{ opacity }}
-                className="bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20"
+                className={`${jetBrains.className} bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
-                <h2 className="text-2xl font-bold text-pink-600 py-4">
-                    Languages :
+                <h2 className="text-md md:text-lg text-yellow-500 py-4">
+                    <ul>
+                        <li> Languages : </li>
+                    </ul>{" "}
                 </h2>
             </motion.div>
         </section>

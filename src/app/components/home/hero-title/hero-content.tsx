@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { VscGithubAlt } from "react-icons/vsc";
+import { jetBrains } from "@/app/fonts/fonts";
 
 export function Hero() {
     const ref = useRef(null);
@@ -57,7 +58,7 @@ export function Hero() {
                     maxWidth: width,
                     maxHeight: height,
                     borderRadius: borderRadius,
-                    filter: "blur(5px)",
+                    filter: "blur(2px)",
                     display: removeItem,
                 }}
             ></motion.div>
@@ -72,9 +73,9 @@ export function Hero() {
                     maxHeight: height,
                 }}
             >
-                <div className=" flex items-center flex-col justify-center ">
+                <div className="flex-col">
                     <motion.h1
-                        className="text-2xl font-bold -mb-3"
+                        className="text-2xl font-bold -mb-3 justify-self-end"
                         style={{
                             display: removeItem,
                         }}
@@ -88,30 +89,32 @@ export function Hero() {
                     >
                         <GlitchedText
                             text="Alan Brim"
-                            class="text-[4rem] font-extrabold -mb-2"
+                            class="text-[4.5rem] font-extrabold "
                         />
                     </motion.div>
                     <motion.div
                         style={{ display: removeItem }}
-                        className="mb-8 bg-gradient-to-br from-gray-900 to-zinc-900 px-4 py-2 rounded-xl text-start max-w-[23rem] mx-auto sm:ms-10 border border-[#6663fd] border-opacity-20"
+                        className={`${jetBrains.className} mb-8 bg-gradient-to-br from-gray-900 to-zinc-900 p-4 rounded-xl text-start max-w-[23.5rem] mr-auto  border border-[#6663fd] border-opacity-20`}
                     >
-                        <h2 className="text-xl font-bold text-pink-600">
-                            Title ( )
-                            <p className="text-xl font-normal text-green-600">
-                                return
+                        <h2 className="text-md md:text-lg font-bold text-pink-600">
+                            Title ( ) {"{"} {""}
+                            <p className="font-normal text-green-600">
+                                return{" "}
+                                <span className="text-textColor">{"("}</span>
                             </p>
-                            <p className="text-xl font-normal text-textColor tracking-widest">
-                                {"{"}
-                                <br />
-                                &quot;{" "}
-                                <span className=" underline underline-offset-4">
+                            <p className=" text-md md:text-lg font-normal text-textColor tracking-widest leading-10">
+                                {" "}
+                                <span className="underline underline-offset-4">
                                     Front-end Developer
                                 </span>{" "}
-                                with, experience in{" "}
-                                <span className=" underline underline-offset-4">
+                                with great, experienced in{" "}
+                                <span className="underline underline-offset-4">
                                     UI/UX{" "}
                                 </span>{" "}
-                                Design &quot; <br /> {"}"};
+                                Design {")"}
+                                <span className="text-pink-600 font-bold">
+                                    {"}"};
+                                </span>
                             </p>
                         </h2>
                     </motion.div>
