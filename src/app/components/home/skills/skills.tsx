@@ -29,7 +29,7 @@ function SkillCard({ skill }: { skill: Skill }) {
 
     return (
         <motion.div
-            ref={ref}
+            // ref={ref}
             className="flex items-start justify-start flex-row gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20"
         >
             <div className="relative w-10 h-10 ">
@@ -275,7 +275,8 @@ export function Skills() {
             </motion.div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden mx-2 py-6 ">
                 {skills.map((skill, index) => (
-                    <SkillCard key={index} skill={skill} index={index} />
+                    <SkillCard key={index} skill={skill} />
+                    // index={index} 
                 ))}
             </div>
             <motion.div
