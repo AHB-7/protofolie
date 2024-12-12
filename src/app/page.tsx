@@ -1,7 +1,7 @@
 "use client";
 import { Hero } from "./components/home/hero-title/hero-content";
 import { ProfessionalSummary } from "./components/home/summary/professional-summary";
-import { ProfileImage } from "./components/home/image/profile-image";
+// import { ProfileImage } from "./components/home/image/profile-image";
 // import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Skills } from "./components/home/skills/skills";
@@ -30,7 +30,7 @@ export default function Home() {
             {/* <Nav /> */}
             <main>
                 <Hero />
-                <ProfileImage />
+                {/* <ProfileImage /> */}
                 <Skills />
                 <ProfessionalSummary />
             </main>

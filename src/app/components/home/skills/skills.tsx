@@ -14,7 +14,7 @@ import {
     FaCss3Alt,
     FaBootstrap,
 } from "react-icons/fa";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
 type Skill = {
     name: string;
@@ -23,74 +23,43 @@ type Skill = {
 };
 // Individual SkillCard Component
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {
-    const rowDirection = Math.floor(index / 4) % 2 === 0 ? 100 : -100; // Alternating row direction
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: "-200px" });
     const animate = useAnimation();
 
-    useEffect(() => {
-        if (inView) {
-            animate.start({
-                x: 0,
-                opacity: 1,
-                transition: {
-                    type: "spring",
-                    duration: 1,
-                    bounce: 0.5,
-                    delay: (index % 4) * 0.2, // Stagger within the row
-                },
-            });
-        } else {
-            animate.start({
-                x: rowDirection,
-                opacity: 0,
-                transition: {
-                    type: "spring",
-                    duration: 1,
-                    bounce: 0.3,
-                },
-            });
-        }
-    }, [inView, animate, rowDirection, index]);
-
     return (
         <motion.div
             ref={ref}
-            animate={animate}
-            className="flex flex-col items-center justify-center p-2 rounded-lg"
+            className="flex items-start justify-start flex-row gap-2 p-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20"
         >
-            <div className="relative w-20 h-20">
-                <svg className="absolute top-0 left-0 w-full h-full transform -rotate-90">
+            <div className="relative w-10 h-10 ">
+                <svg className="absolute top-0 left-0 w-full h-full">
                     <circle
                         cx="50%"
                         cy="50%"
                         r="40%"
                         fill="none"
                         stroke="rgb(255, 255, 255, 0.7)"
-                        strokeWidth="8"
+                        strokeWidth="3"
                     />
                     <motion.circle
                         cx="50%"
                         cy="50%"
                         r="40%"
                         fill="none"
-                        stroke="rgb(13,63,74,1)"
-                        strokeWidth="9"
-                        strokeDasharray="251.2"
-                        strokeDashoffset="251.2"
+                        stroke="grey"
+                        strokeWidth="4"
+                        strokeDasharray={skill.level}
+                        strokeDashoffset={skill.level}
+                        origin={0}
                         strokeLinecap="round"
                         className="circle-progress"
-                        whileInView={{
-                            strokeDashoffset:
-                                251.2 - 251.2 * (skill.level / 100),
-                        }}
                         transition={{
                             duration: 1.5,
                             ease: "easeInOut",
                         }}
                     />
                 </svg>
-
                 <div className="absolute inset-0 flex items-center justify-center">
                     {skill.icon}
                 </div>
@@ -116,27 +85,27 @@ export function Skills() {
         {
             name: "JavaScript",
             level: 75,
-            icon: <FaJsSquare size={32} color="#f7df1e" />,
+            icon: <FaJsSquare size={16} color="#f7df1e" />,
         },
         {
             name: "React",
             level: 60,
-            icon: <FaReact size={32} color="#61dafb" />,
+            icon: <FaReact size={16} color="#61dafb" />,
         },
         {
             name: "HTML5",
             level: 80,
-            icon: <FaHtml5 size={32} color="#e34f26" />,
+            icon: <FaHtml5 size={16} color="#e34f26" />,
         },
         {
             name: "CSS3",
             level: 90,
-            icon: <FaCss3Alt size={32} color="#1572b6" />,
+            icon: <FaCss3Alt size={16} color="#1572b6" />,
         },
         {
             name: "Bootstrap",
             level: 80,
-            icon: <FaBootstrap size={32} color="#563d7c" />,
+            icon: <FaBootstrap size={16} color="#563d7c" />,
         },
         {
             name: "TypeScript",
@@ -145,8 +114,8 @@ export function Skills() {
                 <Image
                     src="/icons/ts.svg"
                     alt="TypeScript"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -157,8 +126,8 @@ export function Skills() {
                 <Image
                     src="/icons/nextjs.svg"
                     alt="Next.js"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                     className="bg-white rounded-full"
                 />
             ),
@@ -170,8 +139,8 @@ export function Skills() {
                 <Image
                     src="/icons/sass.svg"
                     alt="SASS"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -182,8 +151,8 @@ export function Skills() {
                 <Image
                     src="/icons/tailwind.svg"
                     alt="Tailwind"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -194,8 +163,8 @@ export function Skills() {
                 <Image
                     src="/icons/styled-components.svg"
                     alt="Styled-Components"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                     className="bg-white"
                 />
             ),
@@ -207,8 +176,8 @@ export function Skills() {
                 <Image
                     src="/icons/framer-motion.svg"
                     alt="Framer Motion"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -219,8 +188,8 @@ export function Skills() {
                 <Image
                     src="/icons/figma.svg"
                     alt="Figma"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                     className="p-1"
                 />
             ),
@@ -232,8 +201,8 @@ export function Skills() {
                 <Image
                     src="/icons/adobe-xd.svg"
                     alt="Adobe XD"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -244,8 +213,8 @@ export function Skills() {
                 <Image
                     src="/icons/wordpress.svg"
                     alt="WordPress"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -256,8 +225,8 @@ export function Skills() {
                 <Image
                     src="/icons/hygraph.jpeg"
                     alt="Hygraph"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -268,8 +237,8 @@ export function Skills() {
                 <Image
                     src="/icons/supabase.svg"
                     alt="Supabase"
-                    width={32}
-                    height={32}
+                    width={16}
+                    height={16}
                 />
             ),
         },
@@ -282,19 +251,41 @@ export function Skills() {
         >
             <motion.div
                 style={{ opacity }}
-                className="mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start max-w-[24rem] mx-auto sm:ms-10"
+                className="mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20"
             >
-                <h2 className="text-3xl font-bold text-pink-600">Skills</h2>
-                <p className="text-lg">
-                    Those are some of the skills I gained in my journey
-                </p>
+                <h2 className="text-2xl font-bold text-pink-600">
+                    {" "}
+                    Skills ( ) {"{"}{" "}
+                    <p className="text-xl font-normal text-green-600 tracking-widest">
+                        return
+                    </p>
+                    <p className="text-xl font-normal text-textColor">
+                        {"{"} <br /> &quot; Those are some of the skills I
+                        gained in my journey &quot; <br /> {"}"}
+                    </p>
+                </h2>
             </motion.div>
-
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden">
+            <motion.div
+                style={{ opacity }}
+                className="bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20"
+            >
+                <h2 className="text-2xl font-bold text-green-600 py-4">
+                    Teknologis :
+                </h2>
+            </motion.div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden mx-2 py-6 ">
                 {skills.map((skill, index) => (
                     <SkillCard key={index} skill={skill} index={index} />
                 ))}
             </div>
+            <motion.div
+                style={{ opacity }}
+                className="bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20"
+            >
+                <h2 className="text-2xl font-bold text-pink-600 py-4">
+                    Languages :
+                </h2>
+            </motion.div>
         </section>
     );
 }

@@ -28,8 +28,9 @@ export function Hero() {
         [0, 0.8],
         [
             "radial-gradient(circle, rgba(255,255,255, 0.2) 0%, rgba(0,0,0,0) 150%)",
-            "radial-gradient(circle, rgba(9,9,11,1) 30%, rgba(9,9,11,0.8) 1500%)",
+            "radial-gradient(circle, #6663fd 0%, rgba(9,9,11,0.8) 300%)",
         ]
+        //#6663fd
     );
     const removeItem = useTransform(
         scrollYProgress,
@@ -39,11 +40,11 @@ export function Hero() {
 
     return (
         <section
-            className="relative h-full flex items-start mt-3 justify-center"
+            className="relative h-full flex items-start mt-3 justify-center "
             ref={ref}
         >
             <motion.div
-                className="fixed z-0  max-w-[40rem] mx-auto"
+                className="fixed z-0  max-w-[40rem] mx-auto "
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
@@ -61,13 +62,12 @@ export function Hero() {
                 }}
             ></motion.div>
             <motion.div
-                className="fixed flex items-center justify-center flex-col"
+                className="fixed flex items-center justify-center flex-col z-10"
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
                     borderRadius: borderRadius,
                     background: backgroundColor,
-                    // opacity: opacity,
                     maxWidth: width,
                     maxHeight: height,
                 }}
@@ -91,30 +91,30 @@ export function Hero() {
                             class="text-[4rem] font-extrabold -mb-2"
                         />
                     </motion.div>
-                    <motion.p
-                        className="flex items-end justify-start gap-1 flex-col text-md mt-2 text-center bg-gradient-to-br from-slate-900 to-zinc-950  rounded-xl px-4 py-2
-                        bg-opacity-80"
-                        style={{
-                            display: removeItem,
-                        }}
+                    <motion.div
+                        style={{ display: removeItem }}
+                        className="mb-8 bg-gradient-to-br from-gray-900 to-zinc-900 px-4 py-2 rounded-xl text-start max-w-[23rem] mx-auto sm:ms-10 border border-[#6663fd] border-opacity-20"
                     >
-                        <span>
-                            A<span> </span>
-                            <span className=" text-pink-600 ">
-                                Front-end developer
-                            </span>{" "}
-                            passionate
-                        </span>
-                        <span>
-                            <span className="text-green-600 text-xl">UI</span>{" "}
-                            and
-                            <span className="text-green-600 text-xl">
-                                {" "}
-                                UX
-                            </span>{" "}
-                            designs.
-                        </span>
-                    </motion.p>
+                        <h2 className="text-xl font-bold text-pink-600">
+                            Title ( )
+                            <p className="text-xl font-normal text-green-600">
+                                return
+                            </p>
+                            <p className="text-xl font-normal text-textColor tracking-widest">
+                                {"{"}
+                                <br />
+                                &quot;{" "}
+                                <span className=" underline underline-offset-4">
+                                    Front-end Developer
+                                </span>{" "}
+                                with, experience in{" "}
+                                <span className=" underline underline-offset-4">
+                                    UI/UX{" "}
+                                </span>{" "}
+                                Design &quot; <br /> {"}"};
+                            </p>
+                        </h2>
+                    </motion.div>
                 </div>
                 <motion.div className="flex items-center justify-between w-fit gap-2 mx-auto py-4">
                     <div className=" bg-zinc-900 p-3 rounded-full">
