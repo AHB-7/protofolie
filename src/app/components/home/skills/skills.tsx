@@ -1,184 +1,55 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import {
-    FaJsSquare,
-    FaReact,
-    FaHtml5,
-    FaCss3Alt,
-    FaBootstrap,
-} from "react-icons/fa";
 import { useRef } from "react";
 import { jetBrains } from "@/app/fonts/fonts";
 import { SkillCard } from "./skill-card";
 import styles from "./skills.module.css";
+import {
+    getAdobeXdIcon,
+    getBootstrapIcon,
+    getCSS3Icon,
+    getFigmaIcon,
+    getFramerMotionIcon,
+    getHTML5Icon,
+    getHygraphIcon,
+    getJavaScriptIcon,
+    getNextJsIcon,
+    getReactIcon,
+    getSassIcon,
+    getStyledComponentsIcon,
+    getSupabaseIcon,
+    getTailwindIcon,
+    getTypeScriptIcon,
+    getWordPressIcon,
+} from "../../global/icons/icons";
 
 export function Skills() {
     const ref = useRef(null);
-
     const skills = [
         {
             name: "JavaScript",
             level: 75,
-            icon: <FaJsSquare size={16} color="#f7df1e" />,
+            icon: getJavaScriptIcon(16),
         },
+        { name: "React", level: 60, icon: getReactIcon(16) },
+        { name: "HTML5", level: 80, icon: getHTML5Icon(16) },
+        { name: "CSS3", level: 90, icon: getCSS3Icon(16) },
+        { name: "Bootstrap", level: 80, icon: getBootstrapIcon(16) },
+        { name: "TypeScript", level: 75, icon: getTypeScriptIcon(16) },
+        { name: "Next.js", level: 50, icon: getNextJsIcon(16) },
+        { name: "SASS", level: 80, icon: getSassIcon(16) },
+        { name: "Tailwind", level: 80, icon: getTailwindIcon(16) },
         {
-            name: "React",
-            level: 60,
-            icon: <FaReact size={16} color="#61dafb" />,
-        },
-        {
-            name: "HTML5",
+            name: "Styled-Components",
             level: 80,
-            icon: <FaHtml5 size={16} color="#e34f26" />,
+            icon: getStyledComponentsIcon(16),
         },
-        {
-            name: "CSS3",
-            level: 90,
-            icon: <FaCss3Alt size={16} color="#1572b6" />,
-        },
-        {
-            name: "Bootstrap",
-            level: 80,
-            icon: <FaBootstrap size={16} color="#563d7c" />,
-        },
-        {
-            name: "TypeScript",
-            level: 75,
-            icon: (
-                <Image
-                    src="/icons/ts.svg"
-                    alt="TypeScript"
-                    width={16}
-                    height={16}
-                />
-            ),
-        },
-        {
-            name: "Next.js",
-            level: 50,
-            icon: (
-                <Image
-                    src="/icons/nextjs.svg"
-                    alt="Next.js"
-                    width={16}
-                    height={16}
-                    className="bg-white rounded-full"
-                />
-            ),
-        },
-        {
-            name: "SASS",
-            level: 80,
-            icon: (
-                <Image
-                    src="/icons/sass.svg"
-                    alt="SASS"
-                    width={16}
-                    height={16}
-                    className="size-6"
-                />
-            ),
-        },
-        {
-            name: "Tailwind",
-            level: 80,
-            icon: (
-                <Image
-                    src="/icons/tailwind.svg"
-                    alt="Tailwind"
-                    width={16}
-                    height={16}
-                    className="size-6"
-                />
-            ),
-        },
-        {
-            name: "Styled-Comp...",
-            level: 80,
-            icon: (
-                <Image
-                    src="/icons/styled-components.svg"
-                    alt="Styled-Components"
-                    width={16}
-                    height={16}
-                    className="bg-white"
-                />
-            ),
-        },
-        {
-            name: "Framer Motion",
-            level: 60,
-            icon: (
-                <Image
-                    src="/icons/framer-motion.svg"
-                    alt="Framer Motion"
-                    width={16}
-                    height={16}
-                />
-            ),
-        },
-        {
-            name: "Figma",
-            level: 100,
-            icon: (
-                <Image
-                    src="/icons/figma.svg"
-                    alt="Figma"
-                    width={16}
-                    height={16}
-                    className="p-1"
-                />
-            ),
-        },
-        {
-            name: "Adobe XD",
-            level: 60,
-            icon: (
-                <Image
-                    src="/icons/adobe-xd.svg"
-                    alt="Adobe XD"
-                    width={16}
-                    height={16}
-                />
-            ),
-        },
-        {
-            name: "WordPress",
-            level: 50,
-            icon: (
-                <Image
-                    src="/icons/wordpress.svg"
-                    alt="WordPress"
-                    width={16}
-                    height={16}
-                />
-            ),
-        },
-        {
-            name: "Hygraph",
-            level: 70,
-            icon: (
-                <Image
-                    src="/icons/hygraph.jpeg"
-                    alt="Hygraph"
-                    width={16}
-                    height={16}
-                />
-            ),
-        },
-        {
-            name: "Supabase",
-            level: 50,
-            icon: (
-                <Image
-                    src="/icons/supabase.svg"
-                    alt="Supabase"
-                    width={16}
-                    height={16}
-                />
-            ),
-        },
+        { name: "Framer Motion", level: 60, icon: getFramerMotionIcon(16) },
+        { name: "Figma", level: 100, icon: getFigmaIcon(16) },
+        { name: "Adobe XD", level: 60, icon: getAdobeXdIcon(16) },
+        { name: "WordPress", level: 50, icon: getWordPressIcon(16) },
+        { name: "Hygraph", level: 70, icon: getHygraphIcon(16) },
+        { name: "Supabase", level: 50, icon: getSupabaseIcon(16) },
         {
             name: "English",
             level: 100,
@@ -217,10 +88,9 @@ export function Skills() {
                     },
                 }}
                 viewport={{ once: true, margin: "-24% " }}
-                className={`${jetBrains.className} ${styles.gradientBg}  mb-8  sm:mt-0`}
+                className={`${jetBrains.className} ${styles.gradientBg}  mb-8  sm:mt-0 `}
             >
-                <h2 className="text-md md:text-lg font-bold text-pink-600">
-                    {" "}
+                <h2 className="text-md md:text-lg font-bold text-pink-600 py-4">
                     Skills ( ) {"{"}{" "}
                     <p className="text-md md:text-lg font-normal text-green-600 tracking-widest">
                         return <span className="text-textColor">{"("}</span>

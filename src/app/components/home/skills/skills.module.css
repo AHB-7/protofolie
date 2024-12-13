@@ -2,11 +2,11 @@
     @apply bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20;
 }
 .underTitle {
-    @apply md:text-lg text-yellow-500 py-4;
+    @apply md:text-lg text-yellow-500 py-2;
 }
 .skillsContainer {
-    @apply grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden py-6 w-full;
+    @apply grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden py-4 w-full;
 }
 .skillesContainerTek {
-    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 overflow-hidden py-6 w-full;
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 overflow-hidden py-4 w-full;
 }
