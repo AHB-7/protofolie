@@ -11,6 +11,7 @@ import {
 import { useRef } from "react";
 import { jetBrains } from "@/app/fonts/fonts";
 import { SkillCard } from "./skill-card";
+import styles from "./skills.module.css";
 
 export function Skills() {
     const ref = useRef(null);
@@ -199,7 +200,7 @@ export function Skills() {
     return (
         <section
             ref={ref}
-            className="relative w-full flex-wrap -mt-24 flex flex-col items-start justify-center px-2"
+            className="relative w-full flex-wrap -mt-60 flex flex-col items-start justify-center px-2"
         >
             <motion.div
                 initial={{
@@ -216,7 +217,7 @@ export function Skills() {
                     },
                 }}
                 viewport={{ once: true, margin: "-24% " }}
-                className={`${jetBrains.className} mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20 -mt-16 sm:mt-0`}
+                className={`${jetBrains.className} ${styles.gradientBg}  mb-8  sm:mt-0`}
             >
                 <h2 className="text-md md:text-lg font-bold text-pink-600">
                     {" "}
@@ -249,14 +250,12 @@ export function Skills() {
                     },
                 }}
                 viewport={{ once: true, margin: "-15% " }}
-                className={`${jetBrains.className} relative bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
+                className={`${jetBrains.className} relative ${styles.gradientBg}`}
             >
-                <h2 className="text-md md:text-lg text-yellow-500 py-4">
-                    Teknologis :
-                </h2>{" "}
+                <h2 className={`${styles.underTitle}`}>Teknologis :</h2>{" "}
                 <div className=" absolute top-2 right-2"> {`***`} </div>
             </motion.div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 overflow-hidden py-6  w-full">
+            <div className={`${styles.skillesContainerTek}`}>
                 {skills.slice(0, -4).map((skill, index) => (
                     <SkillCard key={index} skill={skill} index={index} />
                 ))}
@@ -276,14 +275,12 @@ export function Skills() {
                     },
                 }}
                 viewport={{ once: true, margin: "-20px " }}
-                className={`${jetBrains.className} relative bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
+                className={`${jetBrains.className} relative ${styles.gradientBg}`}
             >
-                <h2 className="text-md md:text-lg text-yellow-500 py-4">
-                    Languages :
-                </h2>{" "}
+                <h2 className={`${styles.underTitle}`}>Languages :</h2>{" "}
                 <div className=" absolute top-2 right-2"> {`***`} </div>
             </motion.div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden py-6 w-full">
+            <div className={`${styles.skillsContainer}`}>
                 {skills.slice(-4).map((skill, index) => (
                     <SkillCard key={index} skill={skill} index={index} />
                 ))}

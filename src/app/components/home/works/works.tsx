@@ -1,64 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { jetBrains } from "@/app/fonts/fonts";
-import Image from "next/image";
+import styles from "./works.module.css";
 
 export function Works() {
     const ref = useRef(null);
-    const [currentIndex, setCurrentIndex] = useState(0);
 
     const works = [
         {
             link: "https://hollydays.netlify.app/",
-            image: "/works/hollybig.png",
             alt: "Hollydays Booking Site",
+            description: "A booking site for a hotel",
+            tools: (
+                <ul>
+                    <li></li>
+                </ul>
+            ),
         },
         {
             link: "https://e-com-zeta-plum.vercel.app/",
-            image: "/works/hollybig.png",
             alt: "E-commerce Site",
+            description: "An e-commerce site",
+            tools: (
+                <ul>
+                    <li></li>
+                </ul>
+            ),
         },
         {
             link: "https://frolicking-beignet-318578.netlify.app/",
-            image: "/works/hollybig.png",
             alt: "Museum Site",
+            description: "A museum site",
+            tools: (
+                <ul className=" list-item list-inside list-disc">
+                    <li>fsdfs</li> <li>fsdfs</li>
+                </ul>
+            ),
         },
         {
             link: "https://ahb-7.github.io/auctionIt/",
-            image: "/works/hollybig.png",
             alt: "AuctionIt",
+            description: "An auction site",
+            tools: (
+                <ul>
+                    <li></li>
+                </ul>
+            ),
         },
         {
             link: "https://www.tarbush.no/",
-            image: "/works/hollybig.png",
             alt: "Tarbush",
+            description: "A restaurant site",
+            tools: (
+                <ul>
+                    <li></li>
+                </ul>
+            ),
         },
         {
             link: "https://www.vikengullverksted.no/",
-            image: "/works/hollybig.png",
             alt: "Viken Gull Verksted",
+            description: "A jewelry site",
+            tools: (
+                <ul>
+                    <li></li>
+                </ul>
+            ),
         },
     ];
-
-    const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % works.length);
-    };
-
-    const handlePrev = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? works.length - 1 : prevIndex - 1
-        );
-    };
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            handleNext();
-        }, 5000);
-
-        return () => clearInterval(interval); // Clear the interval on unmount
-    }, []);
 
     return (
         <section
@@ -98,42 +109,50 @@ export function Works() {
                     {`**`}{" "}
                 </div>
             </motion.div>
-            <div
-                className={`${jetBrains.className} mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20 sm:mt-0`}
-            >
-                <div className="flex flex-col items-center justify-center gap-4">
-                    <div className="relative flex items-center justify-center h-96 w-full">
-                        <a
-                            href={works[currentIndex].link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+            <div className=" grid grid-cols-1 gap-2 lg:grid-cols-2 w-full ">
+                {works.map((work, index) => {
+                    return (
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 50,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                                transition: {
+                                    type: "spring",
+                                    duration: 1,
+                                    bounce: 0.5,
+                                },
+                            }}
+                            viewport={{ once: true, margin: "-30%" }}
+                            className={`${jetBrains.className} ${styles.codingBok} relative w-full h-36`}
+                            key={index}
                         >
-                            <Image
-                                src={works[currentIndex].image}
-                                alt={works[currentIndex].alt}
-                                fill
-                                className="object-contain"
-                            />
-                        </a>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <button
-                            onClick={handlePrev}
-                            className="px-4 py-2 rounded-md hover:bg-gray-300"
-                        >
-                            ◀
-                        </button>
-                        <span className="text-gray-700">
-                            {currentIndex + 1} / {works.length}
-                        </span>
-                        <button
-                            onClick={handleNext}
-                            className="px-4 py-2 rounded-md hover:bg-gray-300"
-                        >
-                            ▶
-                        </button>
-                    </div>
-                </div>
+                            <a
+                                href={work.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div className="w-full">
+                                    <h3 className="text-lg font-bold text-green-600">
+                                        {work.alt}
+                                    </h3>
+                                    <p className="text-md md:text-lg font-normal text-textColor">
+                                        {work.description}
+                                    </p>
+                                </div>
+                                {work.tools}
+                            </a>
+                            <div className="absolute top-2 right-2">
+                                <p className=" text-4xl font-extrabold opacity-20">
+                                    {index + 1}
+                                </p>
+                            </div>
+                        </motion.div>
+                    );
+                })}
             </div>
         </section>
     );

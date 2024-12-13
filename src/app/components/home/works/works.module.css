@@ -1,0 +1,4 @@
+.codingBok {
+    @apply mb-2 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-sm text-start w-full border border-[#6663fd] border-opacity-20 sm:mt-0;
+    border-top-right-radius: 2rem;
+}
