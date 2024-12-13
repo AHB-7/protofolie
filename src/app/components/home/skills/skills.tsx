@@ -20,6 +20,9 @@ type Skill = {
 // Individual SkillCard Component
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     const ref = useRef(null);
+    const radius = 16; // Fixed radius for the circle
+    const circumference = 2 * Math.PI * radius; // Total circumference
+    const clampedLevel = Math.min(100, Math.max(0, skill.level || 0)); // Clamp skill.level to [0, 100]
 
     return (
         <motion.div
@@ -38,31 +41,38 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
                     delay: index * 0.01,
                 },
             }}
-            viewport={{ once: true, margin: "-20% " }}
-            className="flex items-start justify-center flex-row gap-2 py-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20 w-full"
+            viewport={{ once: true, margin: "-20%" }}
+            className="relative flex items-start justify-center flex-row gap-0 py-1 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20 w-full"
         >
-            <div className="relative w-10 h-10">
+            <div className="relative w-12 h-12">
                 <svg className="absolute top-0 left-0 w-full h-full">
+                    {/* Background Circle */}
                     <circle
                         cx="50%"
                         cy="50%"
-                        r="40%"
-                        fill="none"
-                        stroke="#c3ff3d"
-                        strokeWidth="3"
-                    />
-                    <motion.circle
-                        cx="50%"
-                        cy="50%"
-                        r="40%"
+                        r={radius}
                         fill="none"
                         stroke="grey"
                         strokeWidth="4"
-                        strokeDasharray="251.2"
-                        strokeDashoffset={251.2 - (251.2 * skill.level) / 100}
-                        origin={0}
+                    />
+                    {/* Animated Progress Circle */}
+                    <motion.circle
+                        cx="50%"
+                        cy="50%"
+                        r={radius}
+                        fill="none"
+                        stroke="#c3ff3d"
+                        strokeWidth="4"
+                        strokeDasharray={circumference}
+                        initial={{
+                            strokeDashoffset: circumference, // Start fully hidden
+                        }}
+                        animate={{
+                            strokeDashoffset:
+                                circumference -
+                                (circumference * clampedLevel) / 100,
+                        }}
                         strokeLinecap="round"
-                        className="circle-progress"
                         style={{ rotate: "-90deg", transformOrigin: "center" }}
                         transition={{
                             duration: 1.5,
@@ -70,13 +80,16 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
                         }}
                     />
                 </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
+                {/* Centered Content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
                     {skill.icon ? skill.icon : null}
                 </div>
             </div>
-            <p className="mt-2 text-start font-medium text-white flex-1">
-                {skill.name}
-            </p>
+            <div className=" px-2 flex-1 flex items-center h-full   ">
+                <p className="text-start font-medium text-textColor">
+                    {skill.name}
+                </p>
+            </div>
         </motion.div>
     );
 }
