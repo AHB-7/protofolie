@@ -12,10 +12,10 @@ export default function Home() {
         scrollYProgress,
         [0, 0.05, 0.1, 1],
         [
-            "linear-gradient(0deg, rgba(74,74,77,1) 0%, rgba(0,0,0,1) 100%)",
-            "linear-gradient(0deg, rgba(74,74,77,1) 0%, rgba(0,0,0,1) 100%)",
-            "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(25,25,26,1) 100%)",
-            "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(25,25,26,1) 100%);",
+            "radial-gradient(circle, rgba(22,8,8,1) 0%, rgba(5,7,25,1) 100%)",
+            " radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(13,18,55,1) 100%)",
+            "radial-gradient(circle, rgba(22,8,8,1) 0%, rgba(5,7,25,1) 100%)",
+            "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(13,18,55,1) 100%);",
         ]
     );
 
@@ -24,7 +24,7 @@ export default function Home() {
             className="flex flex-col items-center justify-start w-full "
             style={{
                 background: backgroundScroll,
-                height: "300rem",
+                height: "100VH",
             }}
         >
             {/* <Nav /> */}

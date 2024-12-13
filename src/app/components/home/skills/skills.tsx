@@ -1,11 +1,5 @@
 "use client";
-import {
-    motion,
-    // useAnimation,
-    // useInView,
-    useScroll,
-    useTransform,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import {
     FaJsSquare,
@@ -24,14 +18,27 @@ type Skill = {
 };
 
 // Individual SkillCard Component
-function SkillCard({ skill }: { skill: Skill }) {
-    // const ref = useRef(null);
-    // const inView = useInView(ref, { once: true, margin: "-200px" });
-    // const animate = useAnimation();
+function SkillCard({ skill, index }: { skill: Skill; index: number }) {
+    const ref = useRef(null);
 
     return (
         <motion.div
-            // ref={ref}
+            ref={ref}
+            initial={{
+                opacity: 0,
+                y: 50,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                    type: "spring",
+                    duration: 1,
+                    bounce: 0.5,
+                    delay: index * 0.01,
+                },
+            }}
+            viewport={{ once: true, margin: "-20% " }}
             className="flex items-start justify-center flex-row gap-2 py-2 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20 w-full"
         >
             <div className="relative w-10 h-10">
@@ -51,8 +58,8 @@ function SkillCard({ skill }: { skill: Skill }) {
                         fill="none"
                         stroke="grey"
                         strokeWidth="4"
-                        strokeDasharray={skill.level}
-                        strokeDashoffset={skill.level}
+                        strokeDasharray="251.2"
+                        strokeDashoffset={251.2 - (251.2 * skill.level) / 100}
                         origin={0}
                         strokeLinecap="round"
                         className="circle-progress"
@@ -77,12 +84,6 @@ function SkillCard({ skill }: { skill: Skill }) {
 // Main Skills Component
 export function Skills() {
     const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start center", "end start"],
-    });
-
-    const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
     const skills = [
         {
@@ -269,8 +270,21 @@ export function Skills() {
             className="relative w-full flex-wrap -mt-24 flex flex-col items-start justify-center px-2"
         >
             <motion.div
-                style={{ opacity }}
-                className={`${jetBrains.className} mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
+                initial={{
+                    opacity: 0,
+                    y: 150,
+                }}
+                whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        type: "spring",
+                        duration: 1,
+                        bounce: 0.5,
+                    },
+                }}
+                viewport={{ once: true, margin: "-24% " }}
+                className={`${jetBrains.className} mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20 -mt-16 sm:mt-0`}
             >
                 <h2 className="text-md md:text-lg font-bold text-pink-600">
                     {" "}
@@ -289,7 +303,20 @@ export function Skills() {
                 </div>
             </motion.div>
             <motion.div
-                style={{ opacity }}
+                initial={{
+                    opacity: 0,
+                    y: 150,
+                }}
+                whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        type: "spring",
+                        duration: 1,
+                        bounce: 0.5,
+                    },
+                }}
+                viewport={{ once: true, margin: "-15% " }}
                 className={`${jetBrains.className} relative bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
                 <h2 className="text-md md:text-lg text-yellow-500 py-4">
@@ -299,11 +326,24 @@ export function Skills() {
             </motion.div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 overflow-hidden py-6  w-full">
                 {skills.slice(0, -4).map((skill, index) => (
-                    <SkillCard key={index} skill={skill} />
+                    <SkillCard key={index} skill={skill} index={index} />
                 ))}
             </div>
             <motion.div
-                style={{ opacity }}
+                initial={{
+                    opacity: 0,
+                    y: 150,
+                }}
+                whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        type: "spring",
+                        duration: 1,
+                        bounce: 0.5,
+                    },
+                }}
+                viewport={{ once: true, margin: "-20px " }}
                 className={`${jetBrains.className} relative bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20`}
             >
                 <h2 className="text-md md:text-lg text-yellow-500 py-4">
@@ -313,7 +353,7 @@ export function Skills() {
             </motion.div>
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 overflow-hidden py-6 w-full">
                 {skills.slice(-4).map((skill, index) => (
-                    <SkillCard key={index} skill={skill} />
+                    <SkillCard key={index} skill={skill} index={index} />
                 ))}
             </div>
         </section>
