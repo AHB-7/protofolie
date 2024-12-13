@@ -5,6 +5,7 @@ import { ProfessionalSummary } from "./components/home/summary/professional-summ
 // import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Skills } from "./components/home/skills/skills";
+import { Works } from "./components/home/works/works";
 
 export default function Home() {
     const { scrollYProgress } = useScroll();
@@ -32,6 +33,7 @@ export default function Home() {
                 <Hero />
                 {/* <ProfileImage /> */}
                 <Skills />
+                <Works />
                 <ProfessionalSummary />
             </main>
         </motion.body>

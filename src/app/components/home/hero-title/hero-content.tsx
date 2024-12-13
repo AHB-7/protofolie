@@ -15,7 +15,6 @@ export function Hero() {
         offset: ["start start", "end start"],
     });
 
-    // Animations
     const borderRadius = useTransform(
         scrollYProgress,
         [0, 1],
@@ -31,7 +30,6 @@ export function Hero() {
             "radial-gradient(circle, rgba(255,255,255, 0.2) 0%, rgba(0,0,0,0) 150%)",
             "radial-gradient(circle, #c3ff3d 0%, rgba(9,9,11,0.8) 300%)",
         ]
-        //#6663fd
     );
     const removeItem = useTransform(
         scrollYProgress,
@@ -107,7 +105,7 @@ export function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.9 }}
                         style={{ display: removeItem }}
-                        className={`${jetBrains.className} relative mb-8 bg-gradient-to-br from-gray-900 to-zinc-900 p-4 rounded-xl text-start max-w-[23.5rem] mr-auto  border border-[#6663fd] border-opacity-20`}
+                        className={`${jetBrains.className} relative mb-2 bg-gradient-to-br from-gray-900 to-zinc-900 p-4 rounded-xl text-start max-w-[23.5rem] mr-auto  border border-[#6663fd] border-opacity-20`}
                     >
                         <div className=" absolute top-2 right-2"> {`*`} </div>
                         <h2 className="text-md md:text-lg font-bold text-pink-600">
@@ -116,7 +114,7 @@ export function Hero() {
                                 return{" "}
                                 <span className="text-textColor">{"("}</span>
                             </span>
-                            <span className=" text-md md:text-lg font-normal text-textColor tracking-widest leading-10">
+                            <span className=" text-md md:text-lg font-normal text-textColor">
                                 <br />
                                 <span className="underline underline-offset-4">
                                     Front-end Developer
@@ -134,7 +132,7 @@ export function Hero() {
                     </motion.div>
                 </div>
                 <motion.div
-                    className="flex items-center justify-between w-fit gap-2 mx-auto py-4"
+                    className="flex items-center justify-between w-fit gap-2 mx-auto py-2"
                     initial={{ opacity: 0, y: 120 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 1 }}
