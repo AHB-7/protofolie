@@ -25,6 +25,7 @@ import {
 
 export function Skills() {
     const ref = useRef(null);
+
     const skills = [
         {
             name: "JavaScript",
@@ -68,30 +69,43 @@ export function Skills() {
         },
     ];
 
+    // Animation variants for better motion
+    const containerVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1,
+                type: "spring",
+                staggerChildren: 0.1,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
+
     return (
         <section
             ref={ref}
             className="relative w-full flex-wrap flex flex-col items-start justify-center px-2"
         >
             <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 150,
-                }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        type: "spring",
-                        duration: 1,
-                        bounce: 0.5,
-                    },
-                }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true, margin: "-24% " }}
-                className={`${jetBrains.className} ${styles.gradientBg}  mb-8  sm:mt-0 `}
+                variants={containerVariants}
+                className={`${jetBrains.className} ${styles.gradientBg} mb-8 sm:mt-0`}
             >
-                <h2 className="text-md md:text-lg font-bold text-pink-600 py-4">
-                    Skills ( ) {"{"}{" "}
+                <motion.h2
+                    variants={itemVariants}
+                    className="text-md md:text-lg font-bold text-pink-600 py-4"
+                >
+                    <p className="text-2xl font-extrabold">Skills()</p>
+                    {"{"}
                     <p className="text-md md:text-lg font-normal text-green-600 tracking-widest">
                         return <span className="text-textColor">{"("}</span>
                     </p>
@@ -99,62 +113,87 @@ export function Skills() {
                         Those are some of the skills I gained in my journey
                         <br /> )<span className="text-pink-600">{"}"};</span>
                     </p>
-                </h2>
-                <div className=" absolute top-2 right-4 opacity-90">
+                </motion.h2>
+                <motion.div
+                    variants={itemVariants}
+                    className="absolute top-2 right-4 opacity-90"
+                >
                     {" "}
                     {`**`}{" "}
-                </div>
+                </motion.div>
             </motion.div>
+
             <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 150,
-                }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        type: "spring",
-                        duration: 1,
-                        bounce: 0.5,
-                    },
-                }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true, margin: "-15% " }}
+                variants={containerVariants}
                 className={`${jetBrains.className} relative ${styles.gradientBg}`}
             >
-                <h2 className={`${styles.underTitle}`}>Teknologis :</h2>{" "}
-                <div className=" absolute top-2 right-2"> {`***`} </div>
+                <motion.h2
+                    variants={itemVariants}
+                    className={`${styles.underTitle}`}
+                >
+                    Technologies :
+                </motion.h2>{" "}
+                <motion.div
+                    variants={itemVariants}
+                    className="absolute top-2 right-2"
+                >
+                    {`***`}
+                </motion.div>
             </motion.div>
-            <div className={`${styles.skillesContainerTek}`}>
-                {skills.slice(0, -4).map((skill, index) => (
-                    <SkillCard key={index} skill={skill} index={index} />
-                ))}
-            </div>
+
+            {/* Technologies Section */}
             <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 150,
-                }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        type: "spring",
-                        duration: 1,
-                        bounce: 0.5,
-                    },
-                }}
-                viewport={{ once: true, margin: "-20px " }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-20% " }}
+                variants={containerVariants}
+                className={`${styles.skillesContainerTek}`}
+            >
+                {skills.slice(0, -4).map((skill, index) => (
+                    <motion.div key={index} variants={itemVariants}>
+                        <SkillCard skill={skill} />
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Languages Section */}
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-20% " }}
+                variants={containerVariants}
                 className={`${jetBrains.className} relative ${styles.gradientBg}`}
             >
-                <h2 className={`${styles.underTitle}`}>Languages :</h2>{" "}
-                <div className=" absolute top-2 right-2"> {`***`} </div>
+                <motion.h2
+                    variants={itemVariants}
+                    className={`${styles.underTitle}`}
+                >
+                    Languages :
+                </motion.h2>
+                <motion.div
+                    variants={itemVariants}
+                    className="absolute top-2 right-2"
+                >
+                    {`***`}
+                </motion.div>
             </motion.div>
-            <div className={`${styles.skillsContainer}`}>
+
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-15% " }}
+                variants={containerVariants}
+                className={`${styles.skillsContainer}`}
+            >
                 {skills.slice(-4).map((skill, index) => (
-                    <SkillCard key={index} skill={skill} index={index} />
+                    <motion.div key={index} variants={itemVariants}>
+                        <SkillCard skill={skill} />
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }

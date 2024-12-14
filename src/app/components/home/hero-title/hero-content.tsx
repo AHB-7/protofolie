@@ -36,18 +36,14 @@ export function Hero() {
     );
     const removeItem = useTransform(
         scrollSpring,
-        [0.1, 0.15],
+        [0.1, 0.25],
         ["flex", "none"]
     );
-    const sectionHeight = useTransform(
-        scrollSpring,
-        [0, 0.2, 0.4],
-        ["100%", "50%", "40%"]
-    );
+    const sectionHeight = useTransform(scrollSpring, [0, 0.3], ["100%", "40%"]);
 
     return (
         <motion.section
-            className="relative flex h-[100%] items-start mt-3 justify-center"
+            className="relative flex items-start mt-3 justify-center"
             ref={ref}
             style={{
                 height: sectionHeight,

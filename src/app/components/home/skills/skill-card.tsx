@@ -7,7 +7,7 @@ type Skill = {
     icon?: JSX.Element;
 };
 
-export function SkillCard({ skill, index }: { skill: Skill; index: number }) {
+export function SkillCard({ skill }: { skill: Skill }) {
     const ref = useRef(null);
     const radius = 16;
     const circumference = 2 * Math.PI * radius;
@@ -16,22 +16,7 @@ export function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     return (
         <motion.div
             ref={ref}
-            initial={{
-                opacity: 0,
-                y: 50,
-            }}
-            whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                    type: "spring",
-                    duration: 1,
-                    bounce: 0.5,
-                    delay: index * 0.01,
-                },
-            }}
-            viewport={{ once: true, margin: "-20%" }}
-            className="relative flex items-start justify-center flex-row gap-0 py-1 rounded-lg bg-gradient-to-br from-gray-900 to-zinc-900 border border-[#6663fd] border-opacity-20 w-full"
+            className="relative flex items-center justify-center flex-row gap-0 py-1 rounded-lg bg-gradient-to-br from-slate-900 to-zinc-950 border border-[#6663fd] border-opacity-20 w-full"
         >
             <div className="relative w-12 h-12">
                 <svg className="absolute top-0 left-0 w-full h-full">
@@ -52,7 +37,7 @@ export function SkillCard({ skill, index }: { skill: Skill; index: number }) {
                         strokeWidth="4"
                         strokeDasharray={circumference}
                         initial={{
-                            strokeDashoffset: circumference, // Start fully hidden
+                            strokeDashoffset: circumference,
                         }}
                         animate={{
                             strokeDashoffset:

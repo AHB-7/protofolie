@@ -1,6 +1,5 @@
 "use client";
 import { Hero } from "./components/home/hero-title/hero-content";
-import { ProfessionalSummary } from "./components/home/summary/professional-summary";
 // import { ProfileImage } from "./components/home/image/profile-image";
 // import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -25,7 +24,7 @@ export default function Home() {
             className="flex flex-col items-center justify-start w-full"
             style={{
                 background: backgroundScroll,
-                height: "100VH",
+                height: "100vh",
             }}
         >
             {/* <Nav /> */}
@@ -34,7 +33,6 @@ export default function Home() {
                 {/* <ProfileImage /> */}
                 <Skills />
                 <Works />
-                <ProfessionalSummary />
             </main>
         </motion.body>
     );

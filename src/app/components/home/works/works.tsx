@@ -108,32 +108,43 @@ export function Works() {
             ),
         },
     ];
+    const containerVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 1,
+                type: "spring",
+                staggerChildren: 0.1,
+            },
+        },
+    };
 
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
     return (
         <section
             ref={ref}
             className="relative w-full flex-wrap flex flex-col items-start justify-start px-2 mt-28"
         >
             <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 50,
-                }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                        type: "spring",
-                        duration: 1,
-                        bounce: 0.5,
-                    },
-                }}
-                viewport={{ once: true, margin: "-30%" }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-15% " }}
+                variants={containerVariants}
                 className={`${jetBrains.className} mb-8 bg-gradient-to-br from-slate-900 to-zinc-950 px-4 py-2 rounded-xl text-start w-full border border-[#6663fd] border-opacity-20 sm:mt-0`}
             >
-                <h2 className="text-md md:text-lg font-bold text-pink-600">
-                    {" "}
-                    WorkExperiences ( ) {"{"}{" "}
+                <motion.h2
+                    className="text-md md:text-lg font-bold text-pink-600"
+                    variants={itemVariants}
+                >
+                    <p className=" text-2xl font-extrabold">
+                        WorkExperiences()
+                    </p>
+                    {"{"}
                     <p className="text-md md:text-lg font-normal text-green-600 tracking-widest">
                         return <span className="text-textColor">{"("}</span>
                     </p>
@@ -141,7 +152,7 @@ export function Works() {
                         The best way to learn is to do.
                         <br /> )<span className="text-pink-600">{"}"};</span>
                     </p>
-                </h2>
+                </motion.h2>
                 <div className=" absolute top-2 right-4 opacity-90">
                     {" "}
                     {`**`}{" "}
@@ -151,36 +162,32 @@ export function Works() {
                 {works.map((work, index) => {
                     return (
                         <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 50,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                                transition: {
-                                    type: "spring",
-                                    duration: 1,
-                                    bounce: 0.5,
-                                },
-                            }}
-                            viewport={{ once: true, margin: "-20%" }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-15% " }}
+                            variants={containerVariants}
                             className={`${jetBrains.className} ${styles.codingBok} relative w-full h-36`}
                             key={index}
                         >
                             <div className="w-full">
-                                <h3 className="text-lg font-bold text-green-600">
+                                <motion.h3
+                                    variants={itemVariants}
+                                    className="text-lg font-bold text-green-600"
+                                >
                                     {work.alt}
-                                </h3>
-                                <p className="text-md md:text-lg font-normal text-textColor">
+                                </motion.h3>
+                                <motion.p
+                                    variants={itemVariants}
+                                    className="text-md md:text-lg font-normal text-textColor"
+                                >
                                     {work.description}
-                                </p>
+                                </motion.p>
                             </div>
                             <div className="flex flex-row items-start justify-start gap-1 mt-auto h-full">
                                 {work.tools}
                             </div>
                             <div className="absolute bottom-2 right-2">
-                                <p className=" text-4xl font-extrabold opacity-20">
+                                <p className=" text-6xl rotate-12 font-extrabold opacity-50 filter text-gray-600">
                                     {index + 1}
                                 </p>
                             </div>
