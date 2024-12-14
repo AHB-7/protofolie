@@ -98,29 +98,17 @@ export function Skills() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-24% " }}
                 variants={containerVariants}
-                className={`${jetBrains.className} ${styles.gradientBg} mb-8 sm:mt-0`}
+                className={`${jetBrains.className}  mb-8 sm:mt-0`}
             >
                 <motion.h2
                     variants={itemVariants}
-                    className="text-md md:text-lg font-bold text-pink-600 py-4"
+                    className="text-md md:text-lg font-bold text-pink-600 pt-9"
                 >
                     <p className="text-2xl font-extrabold">Skills()</p>
-                    {"{"}
-                    <p className="text-md md:text-lg font-normal text-green-600 tracking-widest">
-                        return <span className="text-textColor">{"("}</span>
-                    </p>
-                    <p className="text-md md:text-lg font-normal text-textColor">
+                    <p className="text-md md:text-lg font-normal text-textColor py-2">
                         Those are some of the skills I gained in my journey
-                        <br /> )<span className="text-pink-600">{"}"};</span>
                     </p>
                 </motion.h2>
-                <motion.div
-                    variants={itemVariants}
-                    className="absolute top-2 right-4 opacity-90"
-                >
-                    {" "}
-                    {`**`}{" "}
-                </motion.div>
             </motion.div>
 
             <motion.div
@@ -140,7 +128,7 @@ export function Skills() {
                     variants={itemVariants}
                     className="absolute top-2 right-2"
                 >
-                    {`***`}
+                    {`'`}
                 </motion.div>
             </motion.div>
 
@@ -177,7 +165,7 @@ export function Skills() {
                     variants={itemVariants}
                     className="absolute top-2 right-2"
                 >
-                    {`***`}
+                    {`'`}
                 </motion.div>
             </motion.div>
 
@@ -186,7 +174,7 @@ export function Skills() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-15% " }}
                 variants={containerVariants}
-                className={`${styles.skillsContainer}`}
+                className={`${styles.skillsContainer} mb-24`}
             >
                 {skills.slice(-4).map((skill, index) => (
                     <motion.div key={index} variants={itemVariants}>

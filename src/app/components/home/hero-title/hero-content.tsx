@@ -119,7 +119,7 @@ export function Hero() {
                         style={{ display: removeItem }}
                         className={`${jetBrains.className} relative mb-2 bg-gradient-to-br from-gray-900 to-zinc-900 p-4 rounded-xl text-start max-w-[23.5rem] mr-auto border border-[#6663fd] border-opacity-20`}
                     >
-                        <div className="absolute top-2 right-2"> {`*`} </div>
+                        <div className="absolute top-1 right-2"> {`'`} </div>
                         <h2 className="text-md md:text-lg font-bold text-pink-600">
                             Title ( ) {"{"} {""}
                             <span className="font-normal text-green-600">
