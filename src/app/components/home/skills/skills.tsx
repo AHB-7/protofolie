@@ -71,7 +71,7 @@ export function Skills() {
     return (
         <section
             ref={ref}
-            className="relative w-full flex-wrap -mt-60 flex flex-col items-start justify-center px-2"
+            className="relative w-full flex-wrap flex flex-col items-start justify-center px-2"
         >
             <motion.div
                 initial={{

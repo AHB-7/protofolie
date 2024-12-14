@@ -22,7 +22,7 @@ export default function Home() {
 
     return (
         <motion.body
-            className="flex flex-col items-center justify-start w-full "
+            className="flex flex-col items-center justify-start w-full"
             style={{
                 background: backgroundScroll,
                 height: "100VH",
