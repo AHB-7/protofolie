@@ -91,7 +91,7 @@ export function Skills() {
     return (
         <section
             ref={ref}
-            className="relative w-full h-fit flex-wrap flex flex-col items-start justify-center px-2"
+            className="relative w-full h-fit flex-wrap flex flex-col items-start justify-center px-2 mt-12"
         >
             <motion.div
                 initial="hidden"

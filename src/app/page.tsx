@@ -6,6 +6,7 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { Skills } from "./components/home/skills/skills";
 import { Works } from "./components/home/works/works";
 import { AboutMe } from "./components/home/about/about";
+import { Contact } from "./components/home/contact/contact";
 
 export default function Home() {
     const { scrollYProgress } = useScroll();
@@ -35,6 +36,7 @@ export default function Home() {
                 <AboutMe />
                 <Works />
                 <Skills />
+                <Contact />
             </main>
             <motion.div
                 className="absolute inset-0 pointer-events-none"

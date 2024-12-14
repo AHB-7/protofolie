@@ -54,7 +54,7 @@ export function AboutMe() {
                     </span>
                     <span className="text-md md:text-lg font-normal text-textColor flex flex-col">
                         <br />
-                        <span className="text-justify">
+                        <span className=" pl-4">
                             I am Alan Brim, a Front-end Developer with a strong
                             foundation in web development, design, and sales.
                             Experienced in creating responsive, dynamic websites
@@ -71,9 +71,17 @@ export function AboutMe() {
                         </span>
                         <br />
                         <span className="text-pink-600 font-bold">{"}"};</span>
-                        <button className="text-end mt-4">
-                            send a message
-                        </button>
+                        <div className="relative inline-flex group w-fit items-center justify-end ml-auto">
+                            <div className="absolute transition-all duration-1000 opacity-30 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt "></div>
+                            <a
+                                href="#contact"
+                                title="Get quote now"
+                                className="relative inline-flex items-center justify-center px-8 py-3 text-lg font-light text-textColor transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 "
+                                role="button"
+                            >
+                                send
+                            </a>
+                        </div>
                     </span>
                 </h2>
             </motion.div>
