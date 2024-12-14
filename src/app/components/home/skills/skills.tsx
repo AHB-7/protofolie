@@ -91,7 +91,7 @@ export function Skills() {
     return (
         <section
             ref={ref}
-            className="relative w-full flex-wrap flex flex-col items-start justify-center px-2"
+            className="relative w-full h-fit flex-wrap flex flex-col items-start justify-center px-2"
         >
             <motion.div
                 initial="hidden"
@@ -174,7 +174,7 @@ export function Skills() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-15% " }}
                 variants={containerVariants}
-                className={`${styles.skillsContainer} mb-24`}
+                className={`${styles.skillsContainer}`}
             >
                 {skills.slice(-4).map((skill, index) => (
                     <motion.div key={index} variants={itemVariants}>
