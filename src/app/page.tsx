@@ -5,6 +5,7 @@ import { Hero } from "./components/home/hero-title/hero-content";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Skills } from "./components/home/skills/skills";
 import { Works } from "./components/home/works/works";
+import { AboutMe } from "./components/home/about/about";
 
 export default function Home() {
     const { scrollYProgress } = useScroll();
@@ -24,13 +25,14 @@ export default function Home() {
             className="flex flex-col items-center justify-start w-full relative"
             style={{
                 background: backgroundScroll,
-                height: "100vh",
             }}
         >
+            {" "}
+            <Hero />
             {/* <Nav /> */}
-            <main>
-                <Hero />
+            <main className="flex flex-col w-full h-screen">
                 {/* <ProfileImage /> */}
+                <AboutMe />
                 <Works />
                 <Skills />
             </main>
