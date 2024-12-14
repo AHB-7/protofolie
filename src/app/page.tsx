@@ -1,7 +1,5 @@
 "use client";
 import { Hero } from "./components/home/hero-title/hero-content";
-// import { ProfileImage } from "./components/home/image/profile-image";
-// import { Nav } from "./components/layouts/nav/nav";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { Skills } from "./components/home/skills/skills";
 import { Works } from "./components/home/works/works";
@@ -23,16 +21,13 @@ export default function Home() {
 
     return (
         <motion.body
-            className="flex flex-col items-center justify-start w-full relative"
+            className="flex flex-col items-center justify-start relative)"
             style={{
                 background: backgroundScroll,
             }}
         >
-            {" "}
             <Hero />
-            {/* <Nav /> */}
             <main className="flex flex-col w-full h-screen">
-                {/* <ProfileImage /> */}
                 <AboutMe />
                 <Works />
                 <Skills />

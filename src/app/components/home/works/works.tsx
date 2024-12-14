@@ -36,10 +36,10 @@ export function Works() {
                     {getFigmaIcon(20)}
                 </div>
             ),
-            gitLink: "",
+            gitLink: "https://github.com/AHB-7/hollydayiz",
         },
         {
-            link: "https://e-com-zeta-plum.vercel.app/",
+            link: "https://eeecomm.netlify.app/",
             alt: "E-commerce Site",
             description: "An e-commerce site",
             tools: (
@@ -50,6 +50,7 @@ export function Works() {
                     {getFigmaIcon(20)}
                 </div>
             ),
+            gitLink: "https://github.com/AHB-7/e-com",
         },
         {
             link: "https://frolicking-beignet-318578.netlify.app/",
@@ -63,6 +64,7 @@ export function Works() {
                     {getFigmaIcon(20)}
                 </div>
             ),
+            gitLink: "https://github.com/AHB-7/Simple-Static-Website",
         },
         {
             link: "https://ahb-7.github.io/auctionIt/",
@@ -76,6 +78,7 @@ export function Works() {
                     {getFigmaIcon(20)}
                 </div>
             ),
+            gitLink: "https://github.com/AHB-7/Simple-Static-Website",
         },
         {
             link: "https://www.tarbush.no/",
@@ -92,6 +95,7 @@ export function Works() {
                     {getJavaScriptIcon(20)}
                 </div>
             ),
+            gitLink: "https://github.com/AHB-7/tarbush",
         },
         {
             link: "https://www.vikengullverksted.no/",
@@ -106,6 +110,7 @@ export function Works() {
                     {getJavaScriptIcon(20)}
                 </div>
             ),
+            gitLink: "https://github.com/AHB-7/viken",
         },
     ];
     const containerVariants = {
@@ -183,14 +188,14 @@ export function Works() {
                             <div className="absolute top-2 right-4">
                                 <p className=" flex flex-row gap-2 items-center justify-center">
                                     <a
-                                        href={`${work.link}`}
+                                        href={`${work.gitLink}`}
                                         className="flex items-center justify-center rounded-full opacity-70 hover:opacity-100 duration-300"
                                         title="GitHub Link"
                                     >
                                         <FaGithub size={29} />
                                     </a>
                                     <a
-                                        href={`${work.gitLink}`}
+                                        href={`${work.link}`}
                                         className="flex items-center justify-center text-black bg-[#c3ff3d] p-1 rounded-full bg-opacity-70 hover:bg-opacity-100 duration-300"
                                         title="External Link"
                                     >
