@@ -18,12 +18,6 @@ export default function Home() {
             "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(8,10,40,1) 100%)",
         ]
     );
-    const particleOpacity = useTransform(
-        scrollYProgress,
-        [0, 0.5, 1],
-        [1, 0.5, 0]
-    );
-    const particleTranslateY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
     return (
         <motion.body
