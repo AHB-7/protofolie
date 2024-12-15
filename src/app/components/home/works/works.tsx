@@ -149,7 +149,7 @@ export function Works() {
                 >
                     <p className="text-2xl font-extrabold">WorkExperiences()</p>
                     <p className="text-md md:text-lg font-normal text-textColor py-2">
-                        The best way to learn is to do.
+                        Here are some of the works I have done so far!
                     </p>
                 </motion.h2>
             </motion.div>

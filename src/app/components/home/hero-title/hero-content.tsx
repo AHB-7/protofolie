@@ -166,7 +166,7 @@ export function Hero() {
                         </a>
                     </div>
                 </motion.div>
-                <ProfileImage />
+                {/* <ProfileImage /> */}
             </motion.div>
         </motion.section>
     );
