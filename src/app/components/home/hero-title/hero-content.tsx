@@ -7,7 +7,6 @@ import { FiPhoneCall } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { VscGithubAlt } from "react-icons/vsc";
 import { jetBrains } from "@/app/fonts/fonts";
-// import { ProfileImage } from "../image/profile-image";
 
 export function Hero() {
     const ref = useRef(null);
@@ -16,13 +15,11 @@ export function Hero() {
         offset: ["start start", "end start"],
     });
 
-    // Create a smoother scroll progress using `useSpring`
     const scrollSpring = useSpring(scrollYProgress, {
         stiffness: 50,
         damping: 20,
     });
 
-    // Smooth transitions for transformable styles
     const borderRadius = useTransform(scrollSpring, [0, 0.3], ["3rem", "1rem"]);
     const opacity = useTransform(scrollSpring, [0, 0.3], [1, 1]);
     const width = useTransform(scrollSpring, [0, 0.3], ["100%", "14rem"]);
@@ -43,12 +40,11 @@ export function Hero() {
             ref={ref}
             id="hero"
         >
-            {/* Background Blur Section */}
             <motion.div
                 className="fixed z-0 max-w-[40rem] mx-auto h-full w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
@@ -65,9 +61,11 @@ export function Hero() {
                 }}
             ></motion.div>
 
-            {/* Foreground Section */}
             <motion.div
                 className="fixed top-0 flex items-center justify-center flex-col z-10 h-full w-full"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
                 style={{
                     width: "calc(100% - 2rem)",
                     height: "calc(100% - 2rem)",
@@ -77,7 +75,6 @@ export function Hero() {
                     maxHeight: height,
                 }}
             >
-                {/* Introduction Text */}
                 <div className="flex-col">
                     <motion.h1
                         className="text-2xl font-bold -mb-3 justify-self-end"
@@ -105,7 +102,6 @@ export function Hero() {
                         />
                     </motion.div>
 
-                    {/* Title Description */}
                     <motion.div
                         initial={{ opacity: 0, y: 400 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -137,7 +133,6 @@ export function Hero() {
                         </h2>
                     </motion.div>
                 </div>
-                {/* Social Links */}
                 <motion.div
                     className="flex items-center justify-between w-fit gap-2 mx-auto py-2"
                     initial={{ opacity: 0, y: 120 }}
@@ -166,7 +161,6 @@ export function Hero() {
                         </a>
                     </div>
                 </motion.div>
-                {/* <ProfileImage /> */}
             </motion.div>
         </motion.section>
     );

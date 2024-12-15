@@ -73,7 +73,7 @@ export function Contact() {
                     setStatus("success");
                     setMessage("Email sent successfully!");
                     form.reset();
-                    setIsHuman(false); // Reset the robot checkbox
+                    setIsHuman(false); 
                 },
                 (error) => {
                     console.error("EmailJS Error:", error);

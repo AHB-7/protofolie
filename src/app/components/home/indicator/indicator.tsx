@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-// Importing icons from react-icons
 import {
     FaUser,
     FaBriefcase,
@@ -14,12 +13,10 @@ export function Indicator() {
     const [activeSection, setActiveSection] = useState<number>(0);
     const [scrollPercentage, setScrollPercentage] = useState<number>(0);
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-    const sections = ["about", "works", "skills", "contact"]; // Section IDs and Labels
+    const sections = ["about", "works", "skills", "contact"];
 
-    // Define corresponding icons for each section
     const icons = [FaUser, FaBriefcase, FaCode, FaEnvelope];
 
-    // Calculate scroll percentage for button fill
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop =
@@ -38,7 +35,6 @@ export function Indicator() {
         };
     }, []);
 
-    // Detect active section using Intersection Observer
     useEffect(() => {
         const sectionElements = sections.map((id) =>
             document.getElementById(id.toLowerCase())
@@ -104,7 +100,6 @@ export function Indicator() {
                 </motion.div>
             </div>
 
-            {/* Section Icons (Menu) */}
             <motion.div
                 className="fixed bottom-28 transform flex flex-col items-center space-y-4 z-50"
                 initial={{ opacity: 0, scale: 0 }}

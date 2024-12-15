@@ -5,9 +5,8 @@ export function GlitchedText({
     class: classes,
 }: {
     text: string;
-    class: string | string[]; // Accept a string or array of strings
+    class: string | string[];
 }) {
-    // Convert `classes` to a single string if it's an array
     const combinedClasses = Array.isArray(classes)
         ? classes.join(" ")
         : classes;
@@ -18,7 +17,7 @@ export function GlitchedText({
                 <p
                     key={index}
                     style={{ "--index": index } as React.CSSProperties}
-                    className={combinedClasses} // Apply the combined classes
+                    className={combinedClasses} 
                 >
                     {text}
                 </p>

@@ -69,7 +69,6 @@ export function Skills() {
         },
     ];
 
-    // Animation variants for better motion
     const containerVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
