@@ -7,7 +7,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { VscGithubAlt } from "react-icons/vsc";
 import { jetBrains } from "@/app/fonts/fonts";
-import { ProfileImage } from "../image/profile-image";
+// import { ProfileImage } from "../image/profile-image";
 
 export function Hero() {
     const ref = useRef(null);
