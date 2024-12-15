@@ -20,13 +20,14 @@ export function AboutMe() {
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
     };
     return (
-        <div className="flex flex-col items-start justify-start w-full h-full px-2">
+        <div className="flex flex-col items-start justify-start w-full h-full px-2 mt-16">
             <motion.div
                 className=""
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-10% " }}
                 variants={containerVariants}
+                id="about"
             >
                 <motion.h2
                     variants={itemVariants}

@@ -238,10 +238,14 @@ export function Contact() {
                     </button>
                 </div>
             </motion.form>
-            <div className="w-full pt-8 flex items-center justify-center flex-col text-textColor">
-                <p>or</p>
-                <p className="pt-4">call me: +4798698478</p>
-                <p>mail me: ab@kodee.no</p>
+            <div className="w-full pt-8 flex items-center justify-center flex-col text-textColor font-light pb-24">
+                <p className=" w-72 text-center">
+                    or get in touch by either calling or sending me a mail
+                </p>
+                <div className="flex items-center justify-center gap-2 mt-4 flex-col border-t border-b border-[#6663fd] border-opacity-20 p-4">
+                    <p>98698478</p>
+                    <p>ab@kodee.no</p>
+                </div>
             </div>
         </div>
     );

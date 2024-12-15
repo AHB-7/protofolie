@@ -90,6 +90,7 @@ export function Skills() {
 
     return (
         <section
+            id="skills"
             ref={ref}
             className="relative w-full h-fit flex-wrap flex flex-col items-start justify-center px-2 mt-12"
         >

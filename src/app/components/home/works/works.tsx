@@ -133,6 +133,7 @@ export function Works() {
     return (
         <section
             ref={ref}
+            id="works"
             className="relative w-full flex-wrap flex flex-col items-start justify-start px-2 mt-12"
         >
             <motion.div

@@ -7,6 +7,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { VscGithubAlt } from "react-icons/vsc";
 import { jetBrains } from "@/app/fonts/fonts";
+import { ProfileImage } from "../image/profile-image";
 
 export function Hero() {
     const ref = useRef(null);
@@ -22,28 +23,25 @@ export function Hero() {
     });
 
     // Smooth transitions for transformable styles
-    const borderRadius = useTransform(
-        scrollSpring,
-        [0, 0.15],
-        ["3rem", "1rem"]
-    );
-    const opacity = useTransform(scrollSpring, [0, 0.15], [1, 1]);
-    const width = useTransform(scrollSpring, [0, 0.15], ["100%", "14rem"]);
-    const height = useTransform(scrollSpring, [0, 0.15], ["100%", "4rem"]);
+    const borderRadius = useTransform(scrollSpring, [0, 0.3], ["3rem", "1rem"]);
+    const opacity = useTransform(scrollSpring, [0, 0.3], [1, 1]);
+    const width = useTransform(scrollSpring, [0, 0.3], ["100%", "14rem"]);
+    const height = useTransform(scrollSpring, [0, 0.3], ["100%", "4rem"]);
     const backgroundColor = useTransform(
         scrollSpring,
-        [0, 0.15],
+        [0, 0.3],
         [
             "radial-gradient(circle, rgba(255,255,255, 0.2) 0%, rgba(0,0,0,0) 150%)",
             "radial-gradient(circle, #c3ff3d 0%, rgba(9,9,11,0.8) 300%)",
         ]
     );
-    const removeItem = useTransform(scrollSpring, [0, 0.05], ["flex", "none"]);
+    const removeItem = useTransform(scrollSpring, [0, 0.2], ["flex", "none"]);
 
     return (
         <motion.section
             className="relative flex items-start mt-3 justify-center h-screen w-full "
             ref={ref}
+            id="hero"
         >
             {/* Background Blur Section */}
             <motion.div
@@ -85,7 +83,7 @@ export function Hero() {
                         className="text-2xl font-bold -mb-3 justify-self-end"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.15, delay: 0.15 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
                         style={{
                             display: removeItem,
                         }}
@@ -96,7 +94,7 @@ export function Hero() {
                         className="flex items-center justify-center"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.15, delay: 0.15 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
                         style={{
                             display: removeItem,
                         }}
@@ -111,7 +109,7 @@ export function Hero() {
                     <motion.div
                         initial={{ opacity: 0, y: 400 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.15, delay: 0.9 }}
+                        transition={{ duration: 0.3, delay: 0.9 }}
                         style={{ display: removeItem }}
                         className={`${jetBrains.className} relative mb-2 bg-gradient-to-br from-gray-900 to-zinc-900 p-4 rounded-xl text-start max-w-[23.5rem] mr-auto border border-[#6663fd] border-opacity-20`}
                     >
@@ -139,7 +137,6 @@ export function Hero() {
                         </h2>
                     </motion.div>
                 </div>
-
                 {/* Social Links */}
                 <motion.div
                     className="flex items-center justify-between w-fit gap-2 mx-auto py-2"
@@ -148,15 +145,28 @@ export function Hero() {
                     transition={{ duration: 0.4, delay: 1 }}
                 >
                     <div className="bg-zinc-900 p-3 rounded-full">
-                        <FiPhoneCall className="text-2xl" />
+                        <a href="tel:98698478" title="Call 98698478">
+                            <FiPhoneCall className="text-2xl" />
+                        </a>
                     </div>
                     <div className="bg-zinc-900 p-3 rounded-full">
-                        <FaLinkedinIn className="text-2xl" />
+                        <a
+                            href="https://www.linkedin.com/feed/"
+                            title="LinkedIn profile"
+                        >
+                            <FaLinkedinIn className="text-2xl" />
+                        </a>
                     </div>
                     <div className="bg-zinc-900 p-3 rounded-full">
-                        <VscGithubAlt className="text-2xl" />
+                        <a
+                            href="https://github.com/AHB-7"
+                            title="GitHub Profile"
+                        >
+                            <VscGithubAlt className="text-2xl" />
+                        </a>
                     </div>
                 </motion.div>
+                <ProfileImage />
             </motion.div>
         </motion.section>
     );

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-    motion,
-    useScroll,
-    useTransform,
-    useMotionTemplate,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
 export function ProfileImage() {
@@ -13,40 +8,30 @@ export function ProfileImage() {
         offset: ["start start", "end start"],
     });
 
-    const imageScale = useTransform(
+    const removeImage = useTransform(
         scrollYProgress,
-        [0, 0.35, 0.35, 1],
-        [0.4, 0.3, 0.3, 0.3]
+        [0, 0.04],
+        ["flex", "none"]
     );
-    const saturate = useTransform(scrollYProgress, [0, 1], [1, 0]);
-    const brightness = useTransform(
-        scrollYProgress,
-        [0, 0.35, 0.35, 1],
-        [1, 0, 0, 0]
-    );
-    const filter = useMotionTemplate`brightness(${brightness}) saturate(${saturate})`;
-    const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
     return (
-        <section className="relative flex items-start mt-3 justify-center">
-            <motion.div
-                className="fixed h-full w-full bottom-0 left-0"
-                style={{
-                    scale: imageScale,
-                    transformOrigin: "bottom",
-                    filter: filter,
-                    opacity,
-                }}
-            >
-                <Image
-                    src="/images/profile-gj.png"
-                    alt="profile image"
-                    priority
-                    fill
-                    sizes="auto"
-                    className="object-cover w-full h-full overflow-visible max-w-[42rem] mx-auto"
-                />
-            </motion.div>
-        </section>
+        <motion.div
+            className="sticky top-0 z-50 w-[8rem] h-[8rem] aspect-square bottom-0 bg-gradient-to-r from-[#1d2d35] via-[#090509] to-[#080504] rounded-full  overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 1.4 }}
+            style={{
+                transformOrigin: "bottom",
+                display: removeImage,
+            }}
+        >
+            <Image
+                src="/images/profile-gj.png"
+                alt="profile image"
+                priority
+                fill
+                className="scale-125 object-contain rounded-full"
+            />
+        </motion.div>
     );
 }

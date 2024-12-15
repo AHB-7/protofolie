@@ -5,6 +5,7 @@ import { Skills } from "./components/home/skills/skills";
 import { Works } from "./components/home/works/works";
 import { AboutMe } from "./components/home/about/about";
 import { Contact } from "./components/home/contact/contact";
+import { Indicator } from "./components/home/indicator/indicator";
 
 export default function Home() {
     const { scrollYProgress } = useScroll();
@@ -21,13 +22,14 @@ export default function Home() {
 
     return (
         <motion.body
-            className="flex flex-col items-center justify-start relative)"
+            className="flex flex-col items-center justify-start relative"
             style={{
                 background: backgroundScroll,
             }}
         >
+            <Indicator />
             <Hero />
-            <main className="flex flex-col w-full h-screen">
+            <main className="flex flex-col w-full h-screen relative">
                 <AboutMe />
                 <Works />
                 <Skills />
@@ -39,7 +41,7 @@ export default function Home() {
                     background:
                         "radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 80%)",
                 }}
-            ></motion.div>
+            ></motion.div>{" "}
         </motion.body>
     );
 }
